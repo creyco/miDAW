@@ -1,0 +1,180 @@
+1) cambiar los colores de fondo, bordes, y texto.
+Ejemplo:
+skinparam {
+    backgroundColor #F5F5F5
+    shadowing true
+    usecase {
+        BackgroundColor #FFCC99
+        BorderColor #FF8000
+        FontColor #000000
+    }
+    actor {
+        BackgroundColor #FFFF99
+        BorderColor #FFCC00
+        FontColor #000000
+    }
+}
+
+2) Agrega sombra a los elementos para darle una apariencia tridimensional.
+Ejemplo:
+skinparam shadowing true
+
+3) Cambia el estilo, tamaño, y color de la fuente.
+Ejemplo:
+skinparam {
+    defaultFontName Arial
+    defaultFontSize 14
+    defaultFontColor #333333
+}
+
+4)Estilo de Línea: Modifica el grosor y el tipo de las líneas.
+Ejemplo:
+skinparam {
+    usecase {
+        BorderThickness 2
+        RoundCorner 20
+    }
+    actor {
+        BorderThickness 2
+        RoundCorner 20
+    }
+}
+
+5) Redondeo de Bordes (Rounded Corners): Cambia el radio de redondeo de los bordes.
+Ejemplo:
+skinparam usecase {
+    RoundCorner 15
+}
+
+6) Tamaño de Elementos: Ajusta el tamaño de los elementos para una mejor legibilidad.
+Ejemplo:
+skinparam usecase {
+    MinWidth 200
+    MinHeight 50
+}
+
+7) Separadores y Espacios (Spacing): Ajusta el espaciado entre elementos para mejorar la claridad.
+Ejemplo:
+skinparam {
+    usecase {
+        Padding 10
+    }
+    actor {
+        Padding 10
+    }
+}
+
+8) Título y Leyenda: Agrega un título y una leyenda para proporcionar contexto adicional.
+Ejemplo:
+title Diagrama de Casos de Uso
+legend right
+  |= Color |= Significado |
+  | <&color> Verde  | Caso de uso exitoso |
+  | <&color> Rojo   | Caso de uso fallido |
+end legend
+
+9) Ejemplo Completo
+
+@startuml
+
+skinparam {
+    pageOrientation landscape
+    shadowing true
+    backgroundColor #F5F5F5
+    defaultFontName Arial
+    defaultFontSize 14
+    defaultFontColor #333333
+
+    usecase {
+        BackgroundColor #FFCC99
+        BorderColor #FF8000
+        FontColor #000000
+        BorderThickness 2
+        RoundCorner 20
+        MinWidth 200
+        MinHeight 50
+        Padding 10
+    }
+
+    actor {
+        BackgroundColor #FFFF99
+        BorderColor #FFCC00
+        FontColor #000000
+        BorderThickness 2
+        RoundCorner 20
+        Padding 10
+    }
+}
+
+left to right direction
+
+actor Usuario
+actor Administrador as Admin
+actor Ejecutor as Executor
+
+rectangle "Sistema de Gestión de Tareas" {
+    usecase "Acceso de Usuario" as Auth
+
+    rectangle "Gestión de Tareas" {
+        usecase "Crear Tareas" as CrearTareas
+        usecase "Modificar Tareas" as ModificarTareas
+        usecase "Consultar Tareas" as ConsultarTareas
+        usecase "Baja de Tareas" as BajaTareas
+        usecase "Marcar Actividad como Finalizada" as FinalizarTarea
+        usecase "Marcar Actividad como Eliminada" as EliminarTarea
+    }
+
+    rectangle "Gestión de Registro Histórico" {
+        usecase "Registrar Historial de Tareas" as RegistrarHistorial
+        usecase "Consultar Historial de Tareas" as ConsultarHistorial
+    }
+
+    rectangle "Gestión de Usuarios" {
+        usecase "Crear Usuarios" as CrearUsuarios
+        usecase "Modificar Usuarios" as ModificarUsuarios
+        usecase "Consultar Usuarios" as ConsultarUsuarios
+        usecase "Baja de Usuarios" as BajaUsuarios
+    }
+
+    Usuario --> Auth
+    Auth --> Admin
+    Auth --> Executor
+
+    Admin --> CrearTareas
+    Admin --> ModificarTareas
+    Admin --> ConsultarTareas
+    Admin --> BajaTareas
+
+    Admin --> CrearUsuarios
+    Admin --> ConsultarUsuarios
+    Admin --> ModificarUsuarios
+    Admin --> BajaUsuarios
+
+    Executor --> ConsultarTareas
+    Executor --> FinalizarTarea
+    Executor --> EliminarTarea
+
+    ConsultarTareas --|> ConsultarHistorial : <<include>>
+    ModificarTareas --|> RegistrarHistorial : <<include>>
+    CrearTareas --|> RegistrarHistorial : <<include>>
+    BajaTareas --|> RegistrarHistorial : <<include>>
+    FinalizarTarea --|> RegistrarHistorial : <<include>>
+    EliminarTarea --|> RegistrarHistorial : <<include>>
+
+    CrearUsuarios --|> RegistrarHistorial : <<include>>
+    ModificarUsuarios --|> RegistrarHistorial : <<include>>
+    BajaUsuarios --|> RegistrarHistorial : <<include>>
+}
+
+title Diagrama de Casos de Uso
+
+legend right
+  |= Color |= Significado |
+  | <&color> Verde  | Caso de uso exitoso |
+  | <&color> Rojo   | Caso de uso fallido |
+end legend
+
+@enduml
+
+
+

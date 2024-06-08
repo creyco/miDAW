@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Eliminar esta Factura?</h1><br>
+<mat-dialog-content>
+    <div class="formRoot">
+        <div>
+
+            <p><strong>N° Factura: {{factura.id_factura}}</strong></p>
+            <p><strong>Fecha Creacion: {{factura.fecha_creacion | date: 'dd/MM/yyyy HH:mm:ss'}}</strong></p>
+            <p><strong>Cliente: {{factura.vehiculo.duenio.apellido}} {{factura.vehiculo.duenio.nombre}}</strong></p>
+            <p><strong>Cuit: {{factura.vehiculo.duenio.cuit}}</strong></p>
+            <p><strong>Vehiculo: {{factura.vehiculo.marca_modelo}}</strong></p>
+            <p><strong>Patente: {{factura.vehiculo.patente}}</strong></p>
+            <img [src]="factura.vehiculo.pathImage" alt="">
+        </div>
+        <div>
+            <p><strong>Actividades Realizadas</strong></p>
+            @for (item of factura.vehiculo.actividades; track $index) {
+            <p><strong>{{item.descripcion}}: {{factura.importes.split(',')[$index] | currency}}</strong></p>
+            }
+            <h2>Importe Total: {{factura.total| currency}}</h2>
+        </div>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions class="container-Btn-Modal" style="width: 100%;">
+    <button title="Cancelar" mat-button mat-dialog-close color="">Cancelar</button>
+    <button title="Eliminar" mat-button color="warn" (click)="this.facService.deleteFactura(factura.id_factura)"
+        mat-dialog-close cdkFocusInitial>Eliminar</button>
+</mat-dialog-actions>

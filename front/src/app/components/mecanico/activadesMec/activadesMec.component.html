@@ -1,0 +1,70 @@
+<app-base>
+    <main>
+        <div class="card container_Table">
+            @if(actividadService.loading){
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar><br>
+            <h2>Cargando Actividades...</h2>
+            }@else if (actividadService.actividades.length > 0) {
+            <div class="table-responsive" matSort (matSortChange)="actividadService.sortData($event)">
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <td mat-sort-header="descripcion">Descripción</td>
+                            <td mat-sort-header="prioridad">Prioridad</td>
+                            <td mat-sort-header="vehiculo">Vehiculo</td>
+                            <td mat-sort-header="patente">Patente</td>
+                            <td mat-sort-header="estado">Estado</td>
+                            <td mat-sort-header="fecha" [width]="110">Fecha</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @for (item of actividadService.actividades; track $index) {
+                        <tr>
+                            <td>{{item.descripcion}}</td>
+                            <td>
+                                <span [className]="actividadService.selectClass(item.prioridad)"></span>
+                                {{item.prioridad}}
+                            </td>
+                            <td>{{item.vehiculo.marca_modelo}}</td>
+                            <td><strong>{{item.vehiculo.patente}}</strong></td>
+                            <td>
+
+                                <select #s [id]="$index" [value]="item.estado"
+                                    [className]="actividadService.selectClass(s.value)"
+                                    (change)="actividadService.selectClass(s.value);actividadService.editEstadoAct(s.value,item.id_actividad)"
+                                    name="estado" required="true" title="Estado">
+                                    <option [className]="actividadService.selectClass('PENDIENTE')" value="PENDIENTE">
+                                        PENDIENTE
+                                    </option>
+                                    <option [className]="actividadService.selectClass('EN PROCESO')" value="EN PROCESO">
+                                        EN
+                                        PROCESO
+                                    </option>
+                                    <option [className]="actividadService.selectClass('TERMINADA')" value="TERMINADA">
+                                        TERMINADA
+                                    </option>
+                                </select>
+
+                            </td>
+                            <td>
+                                {{item.fecha_modificacion| date: 'dd/MM/yyyy HH:mm:ss'}}
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <mat-paginator [length]="actividadService.longitud" [pageSize]="10"
+                    (page)="actividadService.getActividades($event.pageIndex * 10, $event.pageSize)"
+                    [pageSizeOptions]="globalService.optionsPageSize(actividadService.longitud)"
+                    aria-label="Seleccionar Pagina">
+                </mat-paginator>
+            </div>
+
+            }@else {
+            <h2>No tienes Actividades Pendientes...</h2>
+            }
+        </div>
+    </main>
+</app-base>

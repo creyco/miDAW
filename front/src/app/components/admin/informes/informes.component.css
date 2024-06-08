@@ -1,0 +1,9 @@
+tr td:last-child {
+    text-align: start !important;
+}
+.container-Btn-Modal button{
+    font-size: 16px !important;
+}
+.container-Btn-Modal i{
+ font-size:25px;
+}

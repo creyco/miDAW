@@ -1,0 +1,32 @@
+@startuml
+
+left to right direction
+
+actor Usuario as U
+
+rectangle "Sistema de Gestión de Tareas" {
+    U -- (Autenticación y Autorización)
+
+    (Autenticación y Autorización) -- (Crear tarea)
+    (Autenticación y Autorización) -- (Modificar tarea)
+    (Autenticación y Autorización) -- (Visualizar información de tarea)
+    (Autenticación y Autorización) -- (Visualizar registros de auditoría)
+    (Autenticación y Autorización) -- (Exportar datos a CSV)
+
+    rectangle "Tareas del Administrador" {
+        (Crear tarea)
+        (Modificar tarea)
+        (Visualizar información de tarea)
+        (Visualizar registros de auditoría)
+        (Exportar datos a CSV)
+    }
+
+    rectangle "Tareas del Ejecutor" {
+        (Visualizar Tareas asignadas pendientes)
+        (Marcar tarea como finalizada)
+        (Marcar tarea como eliminada)
+    }
+}
+
+@enduml
+

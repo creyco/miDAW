@@ -1,0 +1,72 @@
+<app-base>
+  <main>
+    <div class="card container_Table">
+      @if(infoService.loading){
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar><br>
+      <h2>Cargando Informes...</h2>
+      }@else if(infoService.informes.length > 0){
+      <div class="table-responsive" id="tabla1">
+        <table width="100%" matSort (matSortChange)="infoService.sortData($event)">
+          <thead>
+            <tr>
+              <td mat-sort-header="descripcion">Actividad</td>
+              <td mat-sort-header="prioridad">Prioridad</td>
+              <td mat-sort-header="usuario">Usuario Actual</td>
+              <td>Usuario Modificación</td>
+              <td mat-sort-header="vehiculo">Vehiculo</td>
+              <td mat-sort-header="patente">Patente</td>
+              <td mat-sort-header="estado">Estado</td>
+              <td mat-sort-header="fecha" [width]="120">Fecha</td>
+              <td>Operacion</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr></tr>
+            @for (item of infoService.informes; track $index) {
+            <tr>
+              <td>{{item.descripcion}}</td>
+              <td>
+                <span [className]="infoService.selectClass(item.prioridad)"></span>
+                {{item.prioridad}}
+              </td>
+              <td>{{item.usuario_actual.apellido}} {{item.usuario_actual.nombre}}</td>
+              <td>{{item.usuario_modificacion.apellido}} {{item.usuario_modificacion.nombre}}</td>
+              <td>{{item.vehiculo.marca_modelo}}</td>
+              <td><strong>{{item.vehiculo.patente}}</strong></td>
+              <td>
+                <span [className]="infoService.selectClass(item.estado)"></span>
+                {{item.estado}}
+              </td>
+              <td>
+                {{item.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}
+              </td>
+              <td>
+                {{item.operacion}}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        <mat-paginator [length]="infoService.longitud" [pageSize]="infoService.informes.length"
+          (page)="infoService.pageInformes($event.pageIndex * 10, $event.pageSize)"
+          [pageSizeOptions]="infoService.optionsPageSize(infoService.longitud)" aria-label="Seleccionar Pagina">
+        </mat-paginator>
+
+        <div class="container-Btn-Modal">
+          <button title="Pdf" (click)="infoService.downloadPDF()">
+            <i class="fa-solid fa-file-pdf"></i>
+            Descargar PDF
+          </button>
+          <button title="Csv" (click)="infoService.downloadCSV()">
+            <i class="fa-solid fa-file-csv"></i>
+            Descargar CSV
+          </button>
+        </div>
+      </div>
+      }@else{
+      <h2>No hay Informes Disponibles...</h2>
+      }
+
+    </div>
+  </main>
+</app-base>

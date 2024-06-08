@@ -1,0 +1,59 @@
+<div class="content-Form">
+  <button title="Volver" (click)="actividadService.formAdd=false">
+    <i class="fa-solid fa-square-caret-left"></i>
+  </button>
+  <h2>Agregar Actividad</h2>
+  <form (submit)="actividadService.createActividad($event)" (reset)="actividadService.resetForm($event)">
+
+    <div class="inputGruop">
+      <label for="descripcion">Descripcion:</label>
+      <textarea name="descripcion" id="descripcion" cols="30" rows="3" required="true"></textarea>
+    </div>
+
+    <div class=" inputGruop">
+      <label for="prioridad">Prioridad:</label>
+      <select #select_prioridad [className]="actividadService.selectClass(select_prioridad.value)"
+        (change)="actividadService.selectClass(select_prioridad.value)" name="prioridad" id="prioridad" [value]=""
+        required="true">
+        <option value="" aria-checked="false">Seleccione Prioridad</option>
+        <option [className]="actividadService.selectClass('BAJA')" value="BAJA">BAJA</option>
+        <option [className]="actividadService.selectClass('MEDIA')" value="MEDIA">MEDIA</option>
+        <option [className]="actividadService.selectClass('ALTA')" value="ALTA">ALTA</option>
+      </select>
+    </div>
+
+    <div class="inputGruop">
+      <label for="vehiculo">Vehiculo:</label>
+      <select #select_vehiculo name="vehiculo" id="vehiculo" [value]="" [required]="true"
+        (change)="actividadService.changeVehiculo(select_vehiculo.value)">
+        <option [value]="" [ariaChecked]="false">Seleccione Vehiculo</option>
+        @for (vehiculo of vehiService.vehiculos; track $index) {
+        <option [value]="vehiculo.id_vehiculo">{{vehiculo.marca_modelo}} - {{vehiculo.patente}}
+        </option>
+        }@empty {<option [value]="" [ariaChecked]="true">No hay Vehiculos Disponibles...</option> }
+      </select>
+      @if(actividadService.vehiculoSelected){
+      <div class="containerImg">
+        <img [src]="actividadService.vehiculoSelected.pathImage" [alt]="actividadService.vehiculoSelected.marca_modelo">
+      </div>
+      }
+    </div>
+
+    <div class="inputGruop">
+      <label for="usuario_actual">Asignar Mecanico:</label>
+      <select name="usuario_actual" id="usuario_actual" [value]="" required="true">
+        <option value="" aria-checked="false">Seleccione Mecanico</option>
+        @for (user of userService.usuarios; track $index) {
+        @if (user.rol === "MECANICO") {
+        <option [value]="user.id_usuario">{{user.nombre}} {{user.apellido}} - {{user.rol}}</option>
+        }
+        }
+      </select>
+    </div>
+
+    <div class="container-Btn-Modal">
+      <button type="reset" title="Cancelar" id="btnCancelar">Cancelar</button>
+      <button type="submit" title="Agregar" id="btnAgregar">Agregar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<app-base>
+  <main>
+    <div class="card container_Table">
+      @if (userService.tabUser) {
+      @if (!userService.formAdd) {
+      <div class="header-table">
+        <button title="Agregar" (click)="userService.formAdd=true;">
+          <i class="fa-solid fa-square-plus"></i>
+        </button>
+      </div>
+      @if(userService.loading){
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar><br>
+      <h2>Cargando Usuarios...</h2>
+      }@else if (userService.usuarios.length > 0) {<!-- TABLA USUARIOS-->
+
+      <app-tabla-usuarios></app-tabla-usuarios>
+      }@else{
+      <h2>No hay Usuarios Disponibles...</h2>
+      }
+      }@else{<!-- AGREGAR USUARIO -->
+
+      <app-formAddUsuario></app-formAddUsuario>
+      }
+      }@else if ( !userService.formAdd && userService.formEdit) {<!-- EDITAR USUARIO -->
+
+      <app-formEditUsuario></app-formEditUsuario>
+      }
+    </div>
+  </main>
+</app-base>

@@ -1,0 +1,588 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">my-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DashboardComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/admin/dashboard/dashboard.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dashboard</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                                <code><a href="../components/BaseComponent.html" target="_self" >BaseComponent</a></code>
+                            <code>MatSortModule</code>
+                                <code><a href="../components/Tabla_Dashboard.html" target="_self" >Tabla_Dashboard</a></code>
+                                <code><a href="../components/EstadisticasComponent.html" target="_self" >EstadisticasComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dashboard.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./dashboard.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userService: <a href="../injectables/UsuariosService.html" target="_self">UsuariosService</a>, globalService: <a href="../injectables/GlobalService.html" target="_self">GlobalService</a>, clienteService: <a href="../injectables/ClientesService.html" target="_self">ClientesService</a>, actService: <a href="../injectables/ActividadesService.html" target="_self">ActividadesService</a>, vehiService: <a href="../injectables/VehiculoService.html" target="_self">VehiculoService</a>, facService: <a href="../injectables/FacturacionService.html" target="_self">FacturacionService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/admin/dashboard/dashboard.component.ts:21</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsuariosService.html" target="_self" >UsuariosService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>globalService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GlobalService.html" target="_self" >GlobalService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>clienteService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ClientesService.html" target="_self" >ClientesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>actService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ActividadesService.html" target="_self" >ActividadesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>vehiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VehiculoService.html" target="_self" >VehiculoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>facService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FacturacionService.html" target="_self" >FacturacionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/components/admin/dashboard/dashboard.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject, ViewChild } from &#x27;@angular/core&#x27;;
+import { AuthService } from &#x27;../../../services/auth.service&#x27;;
+import { BaseComponent } from &#x27;../../base/base.component&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { UsuariosService } from &#x27;../../../services/usuarios.service&#x27;;
+import { ClientesService } from &#x27;../../../services/clientes.service&#x27;;
+import { ActividadesService } from &#x27;../../../services/actividades.service&#x27;;
+import { MatSortModule } from &#x27;@angular/material/sort&#x27;;
+import { GlobalService } from &#x27;../../../services/Global.service&#x27;;
+import { VehiculoService } from &#x27;../../../services/vehiculo.service&#x27;;
+import { FacturacionService } from &#x27;../../../services/facturacion.service&#x27;;
+import { Tabla_Dashboard } from &#x27;./tabla_dashboard/tabla_dashboard.component&#x27;;
+import { EstadisticasComponent } from &#x27;./estadisticas/estadisticas.component&#x27;;
+@Component({
+  selector: &#x27;app-dashboard&#x27;,
+  standalone: true,
+  templateUrl: &#x27;./dashboard.component.html&#x27;,
+  styleUrl: &#x27;./dashboard.component.css&#x27;,
+  imports: [CommonModule, BaseComponent, MatSortModule, Tabla_Dashboard, EstadisticasComponent]
+})
+export default class DashboardComponent {
+  constructor(protected userService: UsuariosService, protected globalService: GlobalService,
+    protected clienteService: ClientesService, protected actService: ActividadesService, protected vehiService: VehiculoService,
+    protected facService: FacturacionService) { }
+
+  ngOnInit() {
+    this.userService.getUsuarios()
+    this.clienteService.getClientes()
+    this.actService.getActividades(0, 5)
+    this.vehiService.getVehiculos()
+    this.facService.getFacturas()
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-base&gt;
+    &lt;main&gt;
+        &lt;div class&#x3D;&quot;container-main&quot;&gt;
+            &lt;!-- ESTADISTICAS --&gt;
+
+            &lt;app-estadisticas [canClientes]&#x3D;&quot;clienteService.longitud&quot; [canPendientes]&#x3D;&quot;actService.pendientes&quot;
+                [canVehiculos]&#x3D;&quot;vehiService.longitud&quot; [canFacturas]&#x3D;&quot;facService.longitud&quot;&gt;&lt;/app-estadisticas&gt;
+
+            &lt;div class&#x3D;&quot;recent-grid&quot;&gt;
+                &lt;div class&#x3D;&quot;projects&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-header&quot;&gt;
+                            &lt;h2&gt;Actividades del dia&lt;/h2&gt;
+                            &lt;a href&#x3D;&quot;actividades&quot;&gt;
+                                &lt;button title&#x3D;&quot;Ver Mas&quot;&gt;Ver Mas
+                                &lt;/button&gt;
+                            &lt;/a&gt;
+                        &lt;/div&gt;
+                        &lt;!-- TABLA --&gt;
+                        &lt;app-tabla_dashboard [data]&#x3D;&quot;actService.actividades_Today&quot;&gt;&lt;/app-tabla_dashboard&gt;
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+                &lt;!-- MECANICOS --&gt;
+                &lt;div class&#x3D;&quot;customers&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-header&quot;&gt;
+                            &lt;h2&gt;Mecanicos&lt;/h2&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                            @for (user of userService.usuarios; track $index) {
+                            @if (user.rol&#x3D;&#x3D;&#x3D;&quot;MECANICO&quot;) {
+                            &lt;div class&#x3D;&quot;customer&quot;&gt;
+                                &lt;div class&#x3D;&quot;info&quot;&gt;
+                                    &lt;div&gt;
+                                        &lt;h4&gt;{{user.apellido}} {{user.nombre}}&lt;/h4&gt;
+                                        &lt;small&gt;{{user.rol}}&lt;/small&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;contact&quot;&gt;
+                                    &lt;i class&#x3D;&quot;fa-solid fa-circle-user&quot;&gt;&lt;/i&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            }
+                            }
+
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+&lt;/app-base&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-base>    <main>        <div class="container-main">            <!-- ESTADISTICAS -->            <app-estadisticas [canClientes]="clienteService.longitud" [canPendientes]="actService.pendientes"                [canVehiculos]="vehiService.longitud" [canFacturas]="facService.longitud"></app-estadisticas>            <div class="recent-grid">                <div class="projects">                    <div class="card">                        <div class="card-header">                            <h2>Actividades del dia</h2>                            <a href="actividades">                                <button title="Ver Mas">Ver Mas                                </button>                            </a>                        </div>                        <!-- TABLA -->                        <app-tabla_dashboard [data]="actService.actividades_Today"></app-tabla_dashboard>                    </div>                </div>                <!-- MECANICOS -->                <div class="customers">                    <div class="card">                        <div class="card-header">                            <h2>Mecanicos</h2>                        </div>                        <div class="card-body">                            @for (user of userService.usuarios; track $index) {                            @if (user.rol==="MECANICO") {                            <div class="customer">                                <div class="info">                                    <div>                                        <h4>{{user.apellido}} {{user.nombre}}</h4>                                        <small>{{user.rol}}</small>                                    </div>                                </div>                                <div class="contact">                                    <i class="fa-solid fa-circle-user"></i>                                </div>                            </div>                            }                            }                        </div>                    </div>                </div>            </div>        </div>    </main></app-base></div>'
+    var COMPONENTS = [{'name': 'ActivadesMecComponent', 'selector': 'app-activadesMec'},{'name': 'ActividadesComponent', 'selector': 'app-actividades'},{'name': 'AngularNavComponent', 'selector': 'app-sideNav'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseComponent', 'selector': 'app-base'},{'name': 'ClientesComponent', 'selector': 'app-clientes'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DialogAuditoria', 'selector': 'dialog-auditoria'},{'name': 'DialogDataDelete', 'selector': 'modal-delete-cliente'},{'name': 'DialogFacturas', 'selector': 'delete-factura'},{'name': 'EstadisticasComponent', 'selector': 'app-estadisticas'},{'name': 'FacturacionComponent', 'selector': 'app-facturacion'},{'name': 'FormAddActComponent', 'selector': 'app-formAddAct'},{'name': 'FormAddClienteComponent', 'selector': 'app-formAddCliente'},{'name': 'FormAddFacturaComponent', 'selector': 'app-formAddFactura'},{'name': 'FormAddUsuarioComponent', 'selector': 'app-formAddUsuario'},{'name': 'FormAddVehiculoComponent', 'selector': 'app-formAddVehiculo'},{'name': 'FormEditActComponent', 'selector': 'app-formEditAct'},{'name': 'FormEditClienteComponent', 'selector': 'app-formEditCliente'},{'name': 'FormEditUsuarioComponent', 'selector': 'app-formEditUsuario'},{'name': 'FormEditVehiculoComponent', 'selector': 'app-formEditVehiculo'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformesComponent', 'selector': 'app-informes'},{'name': 'Tabla_actividadesComponent', 'selector': 'app-tabla_actividades'},{'name': 'Tabla_Dashboard', 'selector': 'app-tabla_dashboard'},{'name': 'TablaClientesComponent', 'selector': 'app-tabla-clientes'},{'name': 'TablaFacturasComponent', 'selector': 'app-tabla-facturas'},{'name': 'TablaUsuariosComponent', 'selector': 'app-tabla-usuarios'},{'name': 'TablaVehiculosComponent', 'selector': 'app-tabla-vehiculos'},{'name': 'UsuariosComponent', 'selector': 'app-usuarios'},{'name': 'VehiculosComponent', 'selector': 'app-vehiculos'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DashboardComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashboardComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

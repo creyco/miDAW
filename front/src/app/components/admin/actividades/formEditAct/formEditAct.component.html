@@ -1,0 +1,83 @@
+<div class="content-Form">
+  <button title="Volver" (click)="actividadService.formEdit=false;actividadService.tabActividades=true">
+    <i class="fa-solid fa-square-caret-left"></i>
+  </button>
+  <h2>Editar Actividad</h2>
+  <form #formEditActividad (submit)="actividadService.editActividad($event)"
+    (reset)="actividadService.resetForm($event)">
+
+    <div class="inputGruop">
+      <label for="descripcion">Descripcion:</label>
+      <textarea [value]="actividadService.actividadEdit?.descripcion" name="descripcion" id="descripcion" cols="30"
+        rows="3" required="true"></textarea>
+    </div>
+
+    <div class="inputGruop">
+      <label for="prioridad">Prioridad:</label>
+      <select #select_prioridad [value]="actividadService.actividadEdit?.prioridad"
+        [className]="actividadService.selectClass(select_prioridad.value)"
+        (change)="actividadService.selectClass(select_prioridad.value)" name="prioridad" id="prioridad" required="true">
+        <option value="" aria-checked="false">Seleccione Prioridad</option>
+        <option [className]="actividadService.selectClass('BAJA')" value="BAJA">BAJA</option>
+        <option [className]="actividadService.selectClass('MEDIA')" value="MEDIA">MEDIA</option>
+        <option [className]="actividadService.selectClass('ALTA')" value="ALTA">ALTA</option>
+      </select>
+    </div>
+    <div class="inputGruop">
+      <label for="vehiculo2">Vehiculo:</label>
+      <select #select name="vehiculo" id="vehiculo2" [required]="true"
+        [value]="actividadService.actividadEdit?.vehiculo?.id_vehiculo"
+        (change)="actividadService.changeVehiculo(select.value)">
+        <option value="0" [ariaChecked]="false">Seleccione Vehiculo</option>
+        @for (vehiculo of vehiService.vehiculos; track vehiculo.id_vehiculo) {
+        if()
+        <option [value]="vehiculo.id_vehiculo"
+          [selected]="vehiculo.id_vehiculo === actividadService.actividadEdit?.vehiculo?.id_vehiculo">
+          {{vehiculo.marca_modelo}} - {{vehiculo.patente}}</option>
+        }@empty {<option value="0" [ariaChecked]="true">No hay Vehiculos Disponibles...</option> }
+      </select>
+
+      @if(actividadService.vehiculoSelected) {
+      <div class="containerImg">
+        <img [src]="actividadService.vehiculoSelected.pathImage" [alt]="actividadService.vehiculoSelected.marca_modelo">
+      </div>
+      }
+
+    </div>
+
+    <div class="inputGruop">
+      <label for="usuario_actual">Asignar Mecanico:</label>
+      <select name="usuario_actual" id="usuario_actual"
+        [value]="actividadService.actividadEdit?.usuario_actual?.id_usuario" required="true">
+        <option value="" aria-checked="false">Seleccione Mecanico</option>
+        @for (user of userService.usuarios; track $index) {
+        @if (user.rol === "MECANICO") {
+        <option [value]="user.id_usuario"
+          [selected]="user.id_usuario === actividadService.actividadEdit?.usuario_actual?.id_usuario">
+          {{user.nombre}} {{user.apellido}} - {{user.rol}}</option>
+        }
+        }
+      </select>
+    </div>
+    <div class="inputGruop">
+      <label for="estado">Estado:</label>
+      <select #select_estado [value]="actividadService.actividadEdit?.estado"
+        [className]="actividadService.selectClass(select_estado.value)"
+        (change)="actividadService.selectClass(select_estado.value)" name="estado" id="estado" required="true">
+        <option value="" aria-checked="false">Seleccione Estado</option>
+        <option [className]="actividadService.selectClass('PENDIENTE')" value="PENDIENTE">PENDIENTE
+        </option>
+        <option [className]="actividadService.selectClass('EN PROCESO')" value="EN PROCESO">EN
+          PROCESO
+        </option>
+        <option [className]="actividadService.selectClass('TERMINADA')" value="TERMINADA">TERMINADA
+        </option>
+      </select>
+    </div>
+
+    <div class="container-Btn-Modal">
+      <button type="reset" title="Cancelar" id="btnCancelar">Cancelar</button>
+      <button type="submit" title="Guardar" id="btnAgregar">Guardar</button>
+    </div>
+  </form>
+</div>

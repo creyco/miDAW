@@ -1,0 +1,66 @@
+@startuml
+
+left to right direction
+
+actor Usuario
+actor Administrador as Admin
+actor Ejecutor as Executor
+'actor "Sistema de Gestión de Tareas" as Sistema
+
+rectangle "Sistema de Gestión de Tareas" {
+    usecase "Acceso de Usuario" as Auth
+
+    rectangle "Gestión de Tareas" {
+        usecase "Crear Tareas" as CrearTareas
+        usecase "Modificar Tareas" as ModificarTareas
+        usecase "Consultar Tareas" as ConsultarTareas
+        usecase "Baja de Tareas" as BajaTareas
+        usecase "Marcar Actividad como Finalizada" as FinalizarTarea
+        usecase "Marcar Actividad como Eliminada" as EliminarTarea
+    }
+
+    rectangle "Gestión de Registro Histórico" {
+        usecase "Registrar Historial de Tareas" as RegistrarHistorial
+        usecase "Consultar Historial de Tareas" as ConsultarHistorial
+    }
+
+    rectangle "Gestión de Usuarios" {
+        usecase "Crear Usuarios" as CrearUsuarios
+        usecase "Modificar Usuarios" as ModificarUsuarios
+        usecase "Consultar Usuarios" as ConsultarUsuarios
+        usecase "Baja de Usuarios" as BajaUsuarios
+    }
+
+    Usuario --> Auth
+    Auth --> Admin
+    Auth --> Executor
+
+    Admin --> CrearTareas
+    Admin --> ModificarTareas
+    Admin --> ConsultarTareas
+    Admin --> BajaTareas
+
+    Admin --> CrearUsuarios
+    Admin --> ConsultarUsuarios
+    Admin --> ModificarUsuarios
+    Admin --> BajaUsuarios
+
+    Executor --> ConsultarTareas
+    Executor --> FinalizarTarea
+    Executor --> EliminarTarea
+
+
+
+    ConsultarTareas --|> ConsultarHistorial : <<include>>
+    ModificarTareas --|> RegistrarHistorial : <<include>>
+    CrearTareas --|> RegistrarHistorial : <<include>>
+    BajaTareas --|> RegistrarHistorial : <<include>>
+    FinalizarTarea --|> RegistrarHistorial : <<include>>
+    EliminarTarea --|> RegistrarHistorial : <<include>>
+
+    CrearUsuarios --|> RegistrarHistorial : <<include>>
+    ModificarUsuarios --|> RegistrarHistorial : <<include>>
+    BajaUsuarios --|> RegistrarHistorial : <<include>>
+}
+
+@enduml

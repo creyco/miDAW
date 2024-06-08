@@ -1,0 +1,21 @@
+@startuml
+
+!theme blueprint
+title "Decisiones en el Diagrama de actividades"
+:Usuario;
+start
+ "Modificar Precio";
+if (Es Administrador?) then (sí)
+    :Ingresar porcentaje de modificación;     
+endif
+:Seleccionar tipo de modificación;
+    if (Modificar todos los libros?) then (sí)
+        :Aplicar porcentaje a todos los libros;
+        :Guardar cambios;
+    else (no)
+        :Seleccionar autor específico;
+        :Aplicar porcentaje a libros del autor;
+        :Guardar cambios;
+    endif
+stop
+@enduml

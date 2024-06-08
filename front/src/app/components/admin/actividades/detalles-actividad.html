@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Historial de Actividad</h1><br>
+<mat-dialog-content>
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Descripcion</td>
+                <td>Prioridad</td>
+                <td>Estado</td>
+                <td [width]="120">Fecha Modificación</td>
+                <td>Operacion</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr></tr>
+            @for (item of auditorias; track $index) {
+            <tr>
+                <td>{{item.descripcion}}</td>
+                <td>
+                    <span [className]="actService.selectClass(item.prioridad)"></span>
+                    {{item.prioridad}}
+                </td>
+                <td>
+                    <span [className]="actService.selectClass(item.estado)"></span>
+                    {{item.estado}}
+                </td>
+                <td>
+                    {{item.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}
+                </td>
+                <td>
+                    {{item.operacion}}
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</mat-dialog-content>
+<mat-dialog-actions class="container-Btn-Modal" style="width: 100%;">
+    <button title="Cerrar" mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

@@ -1,0 +1,44 @@
+<app-base>
+    <main>
+        <div class="card container_Table">
+            @if(cliService.tabClientes){
+            @if(!cliService.formAdd && !cliService.formEdit){
+            <div class="header-table">
+
+                <button title="Agregar" id="btnAdd" (click)="cliService.formAdd=true">
+                    <i class="fa-solid fa-square-plus"></i>
+                </button>
+
+                <button title="Clientes" [class.btnActive]="cliService.tabClientes">
+                    <i class="fa-solid fa-address-book"></i>
+                    Clientes
+                </button>
+                <button title="Vehiculos"
+                    (click)="cliService.tabClientes=false;vehiService.tabVehiculos=true;cliService.formAdd=false;cliService.formEdit=false;">
+                    <i class="fa-solid fa-car"></i>
+                    Vehiculos
+                </button>
+            </div>
+            @if(cliService.loading){
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar><br>
+            <h2 style="text-align: center;">Cargando Clientes...</h2>
+            }@else if (cliService.clientes.length > 0) { <!-- TABLA CLIENTES -->
+
+            <app-tabla-clientes></app-tabla-clientes>
+            }@else {
+            <h2>No hay Clientes Disponibles...</h2>
+            }
+            }@else if (cliService.formAdd) { <!-- AGREGAR CLIENTE -->
+
+            <app-formAddCliente></app-formAddCliente>
+            }
+            @if (!cliService.formAdd && cliService.formEdit) {<!-- EDITAR CLIENTE -->
+
+            <app-formEditCliente></app-formEditCliente> }
+            }@else if (vehiService.tabVehiculos && !cliService.tabClientes) {
+            <app-vehiculos></app-vehiculos>
+            }
+
+        </div>
+    </main>
+</app-base>

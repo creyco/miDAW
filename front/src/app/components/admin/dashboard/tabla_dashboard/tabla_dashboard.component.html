@@ -1,0 +1,40 @@
+<div class="card-body">
+  <div class="table-responsive">
+    @if (actividades_Today.length>0) {
+    <table width="100%" matSort (matSortChange)="actService.sortData($event)">
+      <thead>
+        <tr>
+          <td mat-sort-header="descripcion">Descripción</td>
+          <td mat-sort-header="prioridad">Prioridad</td>
+          <td mat-sort-header="vehiculo">Vehiculo</td>
+          <td mat-sort-header="patente">Patente</td>
+          <td mat-sort-header="mecanico">Mecanico</td>
+          <td mat-sort-header="estado">Estado</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr></tr>
+        @for (item of actividades_Today; track $index) {
+
+        <tr>
+          <td>{{item.descripcion}} {{item.id_actividad}}</td>
+          <td>{{item.prioridad}}</td>
+          <td>{{item.vehiculo.marca_modelo}}</td>
+          <td>{{item.vehiculo.patente}}</td>
+          <td>{{item.usuario_actual.apellido}} {{item.usuario_actual.nombre}}</td>
+          <td>
+            <span [className]="actService.selectClass(item.estado)"></span>
+            {{item.estado}}
+          </td>
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+    }@else {
+    <h3>No hay Actividades Creadas Hoy...</h3>
+    }
+  </div>
+</div>

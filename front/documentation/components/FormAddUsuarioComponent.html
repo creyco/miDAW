@@ -1,0 +1,547 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">my-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FormAddUsuarioComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/admin/usuarios/formAddUsuario/formAddUsuario.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-formAddUsuario</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>NgClass</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>../usuarios.component.css,<br>../../actividades/actividades.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./formAddUsuario.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userService: <a href="../injectables/UsuariosService.html" target="_self">UsuariosService</a>, globalService: <a href="../injectables/GlobalService.html" target="_self">GlobalService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/admin/usuarios/formAddUsuario/formAddUsuario.component.ts:13</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsuariosService.html" target="_self" >UsuariosService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>globalService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GlobalService.html" target="_self" >GlobalService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { UsuariosService } from &#x27;../../../../services/usuarios.service&#x27;;
+import { GlobalService } from &#x27;../../../../services/Global.service&#x27;;
+import { NgClass } from &#x27;@angular/common&#x27;;
+
+@Component({
+  selector: &#x27;app-formAddUsuario&#x27;,
+  templateUrl: &#x27;./formAddUsuario.component.html&#x27;,
+  styleUrls: [&#x27;../usuarios.component.css&#x27;, &#x27;../../actividades/actividades.component.css&#x27;],
+  standalone: true,
+  imports: [NgClass]
+})
+export class FormAddUsuarioComponent {
+
+  constructor(protected userService: UsuariosService, protected globalService: GlobalService) { }
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;content-Form&quot;&gt;
+  &lt;button title&#x3D;&quot;Volver&quot; (click)&#x3D;&quot;userService.formAdd&#x3D;false;userService.tabUser&#x3D;true&quot;&gt;
+    &lt;i class&#x3D;&quot;fa-solid fa-square-caret-left&quot;&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;h2&gt;Agregar Usuario&lt;/h2&gt;
+  &lt;form #formAddUser (submit)&#x3D;&quot;userService.createUser($event)&quot;&gt;
+    &lt;div class&#x3D;&quot;inputGruop&quot;&gt;
+      &lt;label for&#x3D;&quot;nombre&quot;&gt;Nombre:&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;nombre&quot; id&#x3D;&quot;nombre&quot; -&#x3D;&quot;2&quot; maxlength&#x3D;&quot;50&quot; required&#x3D;&quot;true&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;inputGruop&quot;&gt;
+      &lt;label for&#x3D;&quot;apellido&quot;&gt;Apellido:&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;apellido&quot; id&#x3D;&quot;apellido&quot; minlength&#x3D;&quot;2&quot; maxlength&#x3D;&quot;50&quot; required&#x3D;&quot;true&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;inputGruop&quot;&gt;
+      &lt;label for&#x3D;&quot;email&quot;&gt;Email:&lt;/label&gt;
+      &lt;input type&#x3D;&quot;email&quot; name&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; minlength&#x3D;&quot;5&quot; maxlength&#x3D;&quot;50&quot; required&#x3D;&quot;true&quot; autocomplete&#x3D;&quot;on&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;inputGruop&quot;&gt;
+      &lt;label for&#x3D;&quot;nombre_usuario&quot;&gt;Nombre de Usuario:&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;nombre_usuario&quot; id&#x3D;&quot;nombre_usuario&quot; minlength&#x3D;&quot;6&quot; maxlength&#x3D;&quot;50&quot; required&#x3D;&quot;true&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;inputGruop&quot;&gt;
+      &lt;label for&#x3D;&quot;contrasenia&quot;&gt;contrasenia:&lt;/label&gt;
+      &lt;div class&#x3D;&quot;content&quot;&gt;
+        &lt;input #pass type&#x3D;&quot;password&quot; name&#x3D;&quot;contrasenia&quot; id&#x3D;&quot;contrasenia&quot; minlength&#x3D;&quot;6&quot; maxlength&#x3D;&quot;50&quot; required&#x3D;&quot;true&quot;
+          autocomplete&#x3D;&quot;off&quot;&gt;
+        &lt;i class&#x3D;&quot;fa-solid&quot;
+          [ngClass]&#x3D;&quot;{&#x27;fa-eye-slash&#x27;: globalService.showPassword, &#x27;fa-eye&#x27;: !globalService.showPassword}&quot;
+          (click)&#x3D;&quot;globalService.togglePassword(pass)&quot; [title]&#x3D;&quot;pass.type&#x3D;&#x3D;&#x3D;&#x27;password&#x27;?&#x27;Ver&#x27;:&#x27;Ocultar&#x27;&quot;&gt;&lt;/i&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;inputGruop&quot;&gt;
+      &lt;label for&#x3D;&quot;rol&quot;&gt;Rol:&lt;/label&gt;
+      &lt;select name&#x3D;&quot;rol&quot; id&#x3D;&quot;rol&quot; [value]&#x3D;&quot;&quot; required&#x3D;&quot;true&quot;&gt;
+        &lt;option value&#x3D;&quot;&quot; aria-checked&#x3D;&quot;false&quot;&gt;Seleccione Rol&lt;/option&gt;
+        &lt;option value&#x3D;&quot;Administrador&quot;&gt;Administrador&lt;/option&gt;
+        &lt;option value&#x3D;&quot;Mecanico&quot;&gt;Mecanico&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;container-Btn-Modal&quot;&gt;
+      &lt;button type&#x3D;&quot;reset&quot; title&#x3D;&quot;Cancelar&quot; id&#x3D;&quot;btnCancelar&quot;&gt;Cancelar&lt;/button&gt;
+      &lt;button type&#x3D;&quot;submit&quot; title&#x3D;&quot;Agregar&quot; id&#x3D;&quot;btnAgregar&quot;&gt;Agregar&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>../usuarios.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">
+.inputGruop label{
+    font-size: 18px !important;
+}
+.content {
+    width: 100%;
+    height: 42px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid darkgrey;
+    transition: border 0.4s ease;
+}
+
+.content input {
+    width: 88%;
+    border: none !important;
+    height: 35px;
+    padding: 5px;
+}
+.content i{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.inputGruop input:focus-visible {
+    outline: none;
+}
+
+.inputGruop input[type&#x3D;&quot;password&quot;]{
+    letter-spacing: 5px;
+}
+
+.inputGruop:focus-within input  {
+    border: 2px solid var(--main-color);
+}
+.content:focus-within{
+border: 2px solid var(--main-color);
+}
+
+.header-table{
+padding: 5px 0px 5px 10px;
+}
+</code></pre>
+                <p class="comment">
+                    <code>../../actividades/actividades.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">
+td select {
+        width: -webkit-fill-available !important;
+        height: 30px !important;
+        border-radius: 5px !important;
+        margin: auto !important;
+        cursor: pointer;
+}
+
+.inputGruop textarea {
+    border: 1px solid var(--main-color);
+    border-radius: 8px;
+    font-family: &#x27;Poppins&#x27;, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 5px;
+}
+
+.inputGruop textarea:focus {
+    outline-color: var(--main-color);
+}
+
+
+.inputGruop .containerImg {
+    margin: auto;
+    width: 100%;
+    padding: 5px;
+}
+
+.inputGruop img {
+    width: 100%;
+        height: 180px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px;
+}
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="content-Form">  <button title="Volver" (click)="userService.formAdd=false;userService.tabUser=true">    <i class="fa-solid fa-square-caret-left"></i>  </button>  <h2>Agregar Usuario</h2>  <form #formAddUser (submit)="userService.createUser($event)">    <div class="inputGruop">      <label for="nombre">Nombre:</label>      <input type="text" name="nombre" id="nombre" -="2" maxlength="50" required="true">    </div>    <div class="inputGruop">      <label for="apellido">Apellido:</label>      <input type="text" name="apellido" id="apellido" minlength="2" maxlength="50" required="true">    </div>    <div class="inputGruop">      <label for="email">Email:</label>      <input type="email" name="email" id="email" minlength="5" maxlength="50" required="true" autocomplete="on">    </div>    <div class="inputGruop">      <label for="nombre_usuario">Nombre de Usuario:</label>      <input type="text" name="nombre_usuario" id="nombre_usuario" minlength="6" maxlength="50" required="true">    </div>    <div class="inputGruop">      <label for="contrasenia">contrasenia:</label>      <div class="content">        <input #pass type="password" name="contrasenia" id="contrasenia" minlength="6" maxlength="50" required="true"          autocomplete="off">        <i class="fa-solid"          [ngClass]="{\'fa-eye-slash\': globalService.showPassword, \'fa-eye\': !globalService.showPassword}"          (click)="globalService.togglePassword(pass)" [title]="pass.type===\'password\'?\'Ver\':\'Ocultar\'"></i>      </div>    </div>    <div class="inputGruop">      <label for="rol">Rol:</label>      <select name="rol" id="rol" [value]="" required="true">        <option value="" aria-checked="false">Seleccione Rol</option>        <option value="Administrador">Administrador</option>        <option value="Mecanico">Mecanico</option>      </select>    </div>    <div class="container-Btn-Modal">      <button type="reset" title="Cancelar" id="btnCancelar">Cancelar</button>      <button type="submit" title="Agregar" id="btnAgregar">Agregar</button>    </div>  </form></div></div>'
+    var COMPONENTS = [{'name': 'ActivadesMecComponent', 'selector': 'app-activadesMec'},{'name': 'ActividadesComponent', 'selector': 'app-actividades'},{'name': 'AngularNavComponent', 'selector': 'app-sideNav'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseComponent', 'selector': 'app-base'},{'name': 'ClientesComponent', 'selector': 'app-clientes'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DialogAuditoria', 'selector': 'dialog-auditoria'},{'name': 'DialogDataDelete', 'selector': 'modal-delete-cliente'},{'name': 'DialogFacturas', 'selector': 'delete-factura'},{'name': 'EstadisticasComponent', 'selector': 'app-estadisticas'},{'name': 'FacturacionComponent', 'selector': 'app-facturacion'},{'name': 'FormAddActComponent', 'selector': 'app-formAddAct'},{'name': 'FormAddClienteComponent', 'selector': 'app-formAddCliente'},{'name': 'FormAddFacturaComponent', 'selector': 'app-formAddFactura'},{'name': 'FormAddUsuarioComponent', 'selector': 'app-formAddUsuario'},{'name': 'FormAddVehiculoComponent', 'selector': 'app-formAddVehiculo'},{'name': 'FormEditActComponent', 'selector': 'app-formEditAct'},{'name': 'FormEditClienteComponent', 'selector': 'app-formEditCliente'},{'name': 'FormEditUsuarioComponent', 'selector': 'app-formEditUsuario'},{'name': 'FormEditVehiculoComponent', 'selector': 'app-formEditVehiculo'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformesComponent', 'selector': 'app-informes'},{'name': 'Tabla_actividadesComponent', 'selector': 'app-tabla_actividades'},{'name': 'Tabla_Dashboard', 'selector': 'app-tabla_dashboard'},{'name': 'TablaClientesComponent', 'selector': 'app-tabla-clientes'},{'name': 'TablaFacturasComponent', 'selector': 'app-tabla-facturas'},{'name': 'TablaUsuariosComponent', 'selector': 'app-tabla-usuarios'},{'name': 'TablaVehiculosComponent', 'selector': 'app-tabla-vehiculos'},{'name': 'UsuariosComponent', 'selector': 'app-usuarios'},{'name': 'VehiculosComponent', 'selector': 'app-vehiculos'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FormAddUsuarioComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FormAddUsuarioComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

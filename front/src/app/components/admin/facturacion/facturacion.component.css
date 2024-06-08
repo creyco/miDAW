@@ -1,0 +1,32 @@
+.container-Precio{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    align-items: center;
+    /* column-gap: 1rem; */
+    padding-top: 10px;
+    width: 30%;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+.container-Precio h5{
+    margin: 0 ;
+    text-align: start;
+}
+
+.container-Precio input{
+    height: 100%;
+    width: 120px !important;
+    margin-left: auto ;
+} 
+
+.formRoot{
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-table button i {
+    padding: 0 !important;
+}

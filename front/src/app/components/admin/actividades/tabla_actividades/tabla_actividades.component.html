@@ -1,0 +1,71 @@
+<div class="table-responsive">
+  <table width="100%" matSort (matSortChange)="actividadService.sortData($event)">
+    <thead>
+      <tr>
+        <td mat-sort-header="descripcion">Descripción</td>
+        <td mat-sort-header="prioridad">Prioridad</td>
+        <td mat-sort-header="vehiculo">Vehiculo</td>
+        <td mat-sort-header="patente">Patente</td>
+        <td mat-sort-header="mecanico">Mecanico</td>
+        <td mat-sort-header="estado">Estado</td>
+        <td mat-sort-header="fecha" [width]="110">Fecha</td>
+        <td>Modificar</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+      @for (item of actividadService.actividades; track $index) {
+      <tr>
+        <td>{{item.descripcion}}</td>
+        <td>
+          <span [className]="actividadService.selectClass(item.prioridad)"></span>
+          {{item.prioridad}}
+        </td>
+        <td>{{item.vehiculo.marca_modelo}}</td>
+        <td><strong>{{item.vehiculo.patente}}</strong></td>
+        <td>{{item.usuario_actual.nombre}} {{item.usuario_actual.apellido}}</td>
+        <td>
+          <span [className]="actividadService.selectClass(item.estado)"></span>
+          {{item.estado}}
+        </td>
+        <td>
+          {{item.fecha_modificacion| date: 'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          <button style="margin: auto;" mat-button [matMenuTriggerFor]="menu" id="menu" title="Opciones">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item class="edit" title="Editar"
+              (click)="actividadService.tabActividades=false;
+            actividadService.formEdit=true;actividadService.actividadEdit=item; actividadService.vehiculoSelected=item.vehiculo;">
+              <i class=" fa-solid fa-pencil"></i>
+              Editar
+            </button>
+            <button mat-menu-item (click)="openDialog(item.auditorias)" class="edit" title="Eliminar">
+              <i class="fa-solid fa-circle-info"></i>
+              Detalles
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <mat-paginator [length]="actividadService.longitud" [pageSize]="10"
+    (page)="actividadService.getActividades($event.pageIndex * 10, $event.pageSize)"
+    [pageSizeOptions]="globalService.optionsPageSize(actividadService.longitud)" aria-label="Seleccionar Pagina">
+  </mat-paginator>
+
+  <div class="container-Btn-Modal">
+    <button title="Pdf" (click)="actividadService.downloadPDF()">
+      <i class="fa-solid fa-file-pdf"></i>
+      Descargar PDF
+    </button>
+    <button title="Csv" (click)="actividadService.downloadCSV()">
+      <i class="fa-solid fa-file-csv"></i>
+      Descargar CSV
+    </button>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="table-responsive recent-grid">
+  <table width="100%" matSort (matSortChange)="cliService.sortData($event)">
+    <thead>
+      <tr>
+        <td mat-sort-header="apellido">Nombre y Apellido</td>
+        <td mat-sort-header="cuit">Cuit</td>
+        <td mat-sort-header="telefono">Telefono</td>
+        <td mat-sort-header="domicilio">Domicilio</td>
+        <td [width]="80">Opciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+      @for (item of cliService.clientes; track $index) {
+      <tr (mouseover)="cliService.clienteSelected=item; index=0">
+        <td>{{item.nombre}} {{item.apellido}} </td>
+        <td>
+          {{item.cuit}}
+        </td>
+        <td>{{item.telefono}}</td>
+        <td>{{item.domicilio}}</td>
+        <td>
+          <button style="margin: auto;" mat-button [matMenuTriggerFor]="menu" id="menu" title="Opciones">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="cliService.formEdit=true;cliService.clienteEdit=item" class="edit"
+              title="Editar">
+              <i class="fa-solid fa-pencil"></i>
+              Editar
+            </button>
+            @if (item.estado==="ACTIVO") {
+            <button mat-menu-item (click)="openDialog(item)" class="edit" title="Eliminar">
+              <i class="fa-solid fa-trash-can"></i>
+              Eliminar
+            </button>
+            }
+          </mat-menu>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <!-- CARD VEHICULO -->
+  <div class="card">
+    <h4 style="margin: 1px 0px 5px;">Vehiculo</h4>
+
+    <div class="inputGruop">
+      @if(cliService.clienteSelected?.vehiculos?.length) {
+
+      <div class="containerImg">
+        <img [src]="cliService.clienteSelected?.vehiculos[index]?.pathImage"
+          [alt]="cliService.clienteSelected?.vehiculos[index]?.marca_modelo">
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <p><strong>Marca y Modelo:</strong>
+              {{cliService.clienteSelected?.vehiculos[index]?.marca_modelo}}.</p>
+          </tr>
+          <tr>
+            <p><strong>Patente:</strong> {{cliService.clienteSelected?.vehiculos[index]?.patente}}.</p>
+          </tr>
+          <tr>
+            <p><strong>Color:</strong> {{cliService.clienteSelected?.vehiculos[index]?.color}}.</p>
+          </tr>
+        </thead>
+      </table>
+      @if(cliService.clienteSelected?.vehiculos?.length > 1){
+      <div class="paginator">
+        <p><strong>Cantidad: </strong> {{cliService.clienteSelected?.vehiculos?.length}}</p>
+        <i class="fa-solid fa-caret-left" title="Anterior" (click)="irAnterior()"></i>
+        <p>{{index+1}}
+        </p><i class="fa-solid fa-caret-right" title="Siguiente" (click)="irSiguiente()"></i>
+      </div>
+      }
+      }@else{
+      <i class="fa-solid fa-car" style="font-size: 12rem; margin: auto;"></i>
+      <h5>No tiene Vehiculos Asignados...</h5>
+      }
+    </div>
+  </div>
+  <div class="header-table">
+    <div style="margin-right: auto;">
+      <strong><label for="activo">Activos</label></strong>
+      <input type="checkbox" id="activo" [checked]="cliService.isActive"
+        (change)="cliService.getClientes(0,10,1); cliService.isActive=true;">
+    </div>
+    <div style="margin-right: auto;">
+      <strong><label for="baja">Bajas</label></strong>
+      <input type="checkbox" id="baja" [checked]="!cliService.isActive"
+        (change)="cliService.getClientes(0,10,0); cliService.isActive=false;">
+    </div>
+
+    <mat-paginator [length]="cliService.longitud" [pageSize]="cliService.clientes.length"
+      (page)="cliService.getClientes($event.pageIndex * 10, $event.pageSize)"
+      [pageSizeOptions]="globalService.optionsPageSize(cliService.longitud)" aria-label="Select page">
+    </mat-paginator>
+  </div>
+</div>

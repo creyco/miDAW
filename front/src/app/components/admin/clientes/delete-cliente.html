@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Desea dar de Baja Este Cliente?</h1><br>
+<mat-dialog-content>
+    <p><strong>Apellido y Nombre: </strong> {{cliente.apellido}} {{cliente.nombre}}</p>
+    <p><strong>Cuit: </strong> {{cliente.cuit}}.</p>
+    <p><strong>Telefono: </strong> {{cliente.telefono}}.</p>
+    <p><strong>Domicilio: </strong> {{cliente.domicilio}}.</p>
+    <p><strong>Cantidad de Vehiculos: </strong> {{cliente.vehiculos.length}}.</p>
+</mat-dialog-content>
+<mat-dialog-actions class="container-Btn-Modal" style="width: 100%;">
+    <button title="Cancelar" mat-button mat-dialog-close color="">Cancelar</button>
+    <button title="Eliminar" mat-button color="warn" (click)="this.cliService.deleteCliente(cliente.id_cliente)"
+        mat-dialog-close cdkFocusInitial>Eliminar</button>
+</mat-dialog-actions>

@@ -1,0 +1,24 @@
+@startuml
+
+:Usuario;
+start
+:Seleccionar opción "Modificar Precio";
+if (Es Administrador?) then (sí)
+    :Ingresar porcentaje de modificación;
+    :Seleccionar tipo de modificación;
+    if (Modificar todos los libros?) then (sí)
+        :Aplicar porcentaje a todos los libros;
+        :Guardar cambios;
+    else (no)
+        :Seleccionar autor específico;
+        :Aplicar porcentaje a libros del autor;
+        :Guardar cambios;
+    endif
+else (no)
+    :Seleccionar autor específico;
+    :Ingresar porcentaje de modificación;
+    :Aplicar porcentaje a libros del autor;
+    :Guardar cambios;
+endif
+stop
+@enduml

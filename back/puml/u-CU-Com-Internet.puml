@@ -1,0 +1,51 @@
+@startuml
+
+title "CASOS DE USO"
+
+left to right direction
+actor Usuario as U
+
+rectangle "Compra por Internet" {
+    usecase "Autenticar Usuario" as UC1
+    usecase "Realizar Pedido" as UC2
+    usecase "Realizar Pago" as UC3
+    usecase "Seleccionar Producto" as UC4
+    usecase "Eliminar Producto del Pedido" as UC5
+    usecase "Finalizar Pedido" as UC6
+    usecase "Seleccionar Forma de Pago" as UC7
+
+    UC1 ..> UC2 : <<include>>
+    UC2 ..> UC3 : <<include>>
+    UC2 ..> UC4 : <<include>>
+    UC2 ..> UC5 : <<extend>>
+    UC2 ..> UC6 : <<include>>
+    UC3 ..> UC6 : <<include>>
+    UC6 ..> UC7 : <<include>>
+}
+
+U --> UC1
+U --> UC2
+U --> UC3
+U --> UC4
+U --> UC5
+U --> UC6
+U --> UC7
+
+skinparam usecase {
+    BackgroundColor SkyBlue
+    BorderColor SkyBlue
+}
+
+skinparam include {
+    Color Red
+    FontColor Red
+    LineStyle dashed
+}
+
+skinparam extend {
+    Color Green
+    FontColor Green
+    LineStyle dashed
+}
+
+@enduml

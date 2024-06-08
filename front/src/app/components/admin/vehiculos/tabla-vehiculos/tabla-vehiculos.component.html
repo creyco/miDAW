@@ -1,0 +1,39 @@
+<div class="table-responsive">
+  <table width="100%" matSort (matSortChange)="vehiService.sortData($event)">
+    <thead>
+      <tr>
+        <td mat-sort-header="marca_modelo">Marca y Modelo</td>
+        <td mat-sort-header="patente">Patente</td>
+        <td mat-sort-header="color">Color</td>
+        <td mat-sort-header="duenio">Dueño</td>
+        <td>Imagen</td>
+        <td [width]="80">Modificar</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+      @for (item of vehiService.vehiculos; track $index) {
+      <tr>
+        <td>{{item.marca_modelo}}</td>
+        <td>
+          <strong>{{item.patente}}</strong>
+        </td>
+        <td>{{item.color}}</td>
+        <td>{{item.duenio.apellido}} {{item.duenio.nombre}} </td>
+        <td>
+          <img [src]="item.pathImage" [align]="item.marca_modelo">
+        </td>
+        <td>
+          <button class="edit" (click)="vehiService.formEdit=true; vehiService.vehiculoEdit=item" title="Editar">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <mat-paginator [length]="vehiService.longitud" [pageSize]="vehiService.vehiculos.length"
+    (page)="vehiService.getVehiculos($event.pageIndex * 5, $event.pageSize)"
+    [pageSizeOptions]="globalService.optionsPageSize(vehiService.longitud)" aria-label="Seleccionar Pagina">
+  </mat-paginator>
+</div>

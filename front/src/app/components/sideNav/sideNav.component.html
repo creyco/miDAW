@@ -1,0 +1,110 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer mode="side" position="start" opened="true">
+    <div class="sidenav-brand">
+      <i class="fa-brands fa-asymmetrik"></i>
+      <h1>
+        ASTRA
+      </h1>
+    </div>
+    <div class="sidebar-menu">
+      <ul>
+        @if (userData?.rol==="ADMINISTRADOR") {
+        <li>
+          <a href="actividades" title="Actividades" [class.active]="currentPath === 'actividades'">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span>Actividades</span>
+          </a>
+        </li>
+        <li>
+          <a href="clientes" title="Clientes" [class.active]="currentPath === 'clientes'">
+            <i class="fa-solid fa-address-book"></i>
+            <span>Clientes</span>
+          </a>
+        </li>
+        <li>
+          <a href="usuarios" title="Usuarios" [class.active]="currentPath === 'usuarios'">
+            <i class="fa-solid fa-users"></i>
+            <span>Usuarios</span>
+          </a>
+        </li>
+        <li>
+          <a href="facturacion" title="Facturacion" [class.active]="currentPath === 'facturacion'">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <span>Facturación</span>
+          </a>
+        </li>
+        <li>
+          <a href="informes" title="Informes" [class.active]="currentPath === 'informes'">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Informes</span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboard" title="Inicio" [class.active]="currentPath === 'dashboard'">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+          </a>
+        </li>
+        }
+        <li *ngIf="userData?.rol==='MECANICO'">
+          <a href="actividadesMec" title="Actividades" [class.active]="currentPath === 'actividadesMec'">
+            <i class="fa-solid fa-house"></i>
+            <span>Mis Actividades</span>
+          </a>
+        </li>
+        <br>
+        <li>
+          <a role="button" (click)="authService.logout()" title="Salir" style="cursor: pointer;">
+            <i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180"></i>
+            <span>Cerrar Sesion</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="copyright">
+      <span>© 2024 Astra Mecánica.</span>
+      <span>Todos los Derechos Reservados.</span>
+    </div>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <header>
+      <div class="container-toggle">
+        <label for="nav-toggle" (click)="drawer.toggle()" title="Menu">
+          <i class="fa-solid fa-bars" style="font-size: 2.5rem;"></i>
+        </label>
+        <h2>
+          {{ currentPath=="dashboard" ? "INICIO" : currentPath === "actividadesMec" ? "MIS ACTIVIDADES" : currentPath |
+          uppercase }}
+        </h2>
+      </div>
+      <div class="user-wrapper" title="Perfil">
+        <i class="fa-solid fa-circle-user"></i>
+        <div>
+          @if (userData) {
+          <h4>{{userData.nombre}} {{userData.apellido}}</h4>
+          <small>{{userData.rol}}</small>
+          }@else {
+          <h4>Usuario</h4>
+          <small>Rol</small>
+          }
+
+        </div>
+        <i class="fa-solid fa-sort-down" mat-button [matMenuTriggerFor]="menu" id="menu" title="Menu"></i>
+        <mat-menu #menu="matMenu">
+          @if (userData?.rol === 'ADMINISTRADOR') {
+            <button mat-menu-item 
+              (click)="userService.formEdit=true;userService.tabUser=false;userService.findUser(userData?.id);">Perfil</button>
+          }@else {
+            <button mat-menu-item (click)="openDialog(userData)">Perfil</button>
+          }
+          <button mat-menu-item (click)="authService.logout()">Salir</button>
+        </mat-menu>
+
+      </div>
+    </header>
+    <ng-content />
+  </mat-drawer-content>
+</mat-drawer-container>

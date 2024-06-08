@@ -1,0 +1,52 @@
+<div class="table-responsive">
+  <table width="100%" matSort (matSortChange)="facService.sortData($event)">
+    <thead>
+      <tr>
+        <td mat-sort-header="id">No.</td>
+        <td mat-sort-header="cliente">Cliente</td>
+        <td mat-sort-header="cuit">Cuit</td>
+        <td mat-sort-header="vehiculo">Vehiculo</td>
+        <td mat-sort-header="patente">Patente</td>
+        <td mat-sort-header="importe">Impt.Total</td>
+        <td mat-sort-header="fecha" [width]="100">Fecha</td>
+        <td>Opciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+      @for (item of facService.facturas; track $index) {
+      <tr>
+        <td style="text-align: start;"><strong># {{item.id_factura}}</strong></td>
+        <td>{{item.vehiculo.duenio.apellido}} {{item.vehiculo.duenio.nombre}}</td>
+        <td>{{item.vehiculo.duenio.cuit}}</td>
+        <td>{{item.vehiculo.marca_modelo}}</td>
+        <td>{{item.vehiculo.patente}}</td>
+        <td><strong>{{item.total | currency}}</strong></td>
+        <td>
+          {{item.fecha_creacion | date: 'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          <button style="margin: auto;" mat-button [matMenuTriggerFor]="menu" id="menu" title="Opciones">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="facService.downloadFactura(item)" class="edit" title="Descargar">
+              <i class="fa-solid fa-file-pdf"></i>
+              Descargar
+            </button>
+            <button mat-menu-item (click)="openDialog(item)" class="edit" title="Eliminar">
+              <i class="fa-solid fa-trash-can"></i>
+              Eliminar
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <mat-paginator [length]="facService.longitud" [pageSize]="10"
+    (page)="facService.getFacturas($event.pageIndex * 10, $event.pageSize)"
+    [pageSizeOptions]="globalService.optionsPageSize(facService.longitud)" aria-label="Seleccionar Pagina">
+  </mat-paginator>
+</div>

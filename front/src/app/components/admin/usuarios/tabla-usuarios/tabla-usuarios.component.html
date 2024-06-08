@@ -1,0 +1,44 @@
+<div class="table-responsive" matSort (matSortChange)="userService.sortData($event)">
+  <table width="100%">
+    <thead>
+      <tr>
+        <td mat-sort-header="apellido">Apellido</td>
+        <td mat-sort-header="nombre">Nombre</td>
+        <td mat-sort-header="nombre_usuario">Usuario</td>
+        <td mat-sort-header="email">Email</td>
+        <td mat-sort-header="rol">Rol</td>
+        <td mat-sort-header="estado">Estado</td>
+        <td [width]="100">Modificar</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+      @for (item of userService.usuarios; track $index) {
+      <tr>
+        <td>{{item.apellido}}</td>
+        <td>
+          {{item.nombre}}
+        </td>
+        <td>{{item.nombre_usuario}}</td>
+        <td>{{item.email}}</td>
+        <td><strong>{{item.rol}}</strong></td>
+        <td>
+          <span [className]="userService.selectClass(item.estado)"></span>
+          {{item.estado}}
+        </td>
+        <td>
+          <Button class="edit" title="Editar"
+            (click)="userService.formEdit=true;userService.tabUser=false;userService.userEdit=item">
+            <i class="fa-solid fa-pencil"></i>
+          </Button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <mat-paginator [length]="userService.longitud" [pageSize]="10"
+    (page)="userService.getUsuarios($event.pageIndex * 10, $event.pageSize)"
+    [pageSizeOptions]="globalService.optionsPageSize(userService.longitud)" aria-label="Select page">
+  </mat-paginator>
+</div>

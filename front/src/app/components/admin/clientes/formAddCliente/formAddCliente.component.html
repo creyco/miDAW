@@ -1,0 +1,41 @@
+<div class="content-Form">
+  <div class="header-table ">
+    <button title="Volver" (click)="cliService.formAdd=false">
+      <i class="fa-solid fa-square-caret-left"></i>
+    </button>
+  </div>
+  <h2>Agregar Cliente</h2><br>
+  <form (submit)="cliService.createCliente($event)">
+
+    <div class="inputGruop">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" [required]="true" minlength="3" maxlength="30">
+    </div>
+
+    <div class="inputGruop">
+      <label for="apellido">Apellido:</label>
+      <input type="text" name="apellido" id="apellido" [required]="true" minlength="3" maxlength="30">
+    </div>
+
+    <div class="inputGruop">
+      <label for="cuit">Cuit:</label>
+      <input type="text" placeholder="xx-xxxxxxxx-x" name="cuit" id="cuit" [required]="true" minlength="12"
+        maxlength="13">
+    </div>
+
+    <div class="inputGruop">
+      <label for="telefono">Telefono:</label>
+      <input type="text" name="telefono" id="telefono" [required]="true" minlength="5" maxlength="50">
+    </div>
+
+    <div class="inputGruop">
+      <label for="domicilio">Domicilio</label>
+      <input type="text" name="domicilio" id="domicilio" [required]="true" minlength="5" maxlength="50">
+    </div>
+
+    <div class="container-Btn-Modal">
+      <button type="reset" title="Cancelar" id="btnCancelar">Cancelar</button>
+      <button type="submit" title="Agregar" id="btnAgregar">Agregar</button>
+    </div>
+  </form>
+</div>

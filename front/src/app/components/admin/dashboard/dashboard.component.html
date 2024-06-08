@@ -1,0 +1,53 @@
+<app-base>
+    <main>
+        <div class="container-main">
+            <!-- ESTADISTICAS -->
+
+            <app-estadisticas [canClientes]="clienteService.longitud" [canPendientes]="actService.pendientes"
+                [canVehiculos]="vehiService.longitud" [canFacturas]="facService.longitud"></app-estadisticas>
+
+            <div class="recent-grid">
+                <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Actividades del dia</h2>
+                            <a href="actividades">
+                                <button title="Ver Mas">Ver Mas
+                                </button>
+                            </a>
+                        </div>
+                        <!-- TABLA -->
+                        <app-tabla_dashboard [data]="actService.actividades_Today"></app-tabla_dashboard>
+                    </div>
+
+                </div>
+                <!-- MECANICOS -->
+                <div class="customers">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Mecanicos</h2>
+                        </div>
+                        <div class="card-body">
+                            @for (user of userService.usuarios; track $index) {
+                            @if (user.rol==="MECANICO") {
+                            <div class="customer">
+                                <div class="info">
+                                    <div>
+                                        <h4>{{user.apellido}} {{user.nombre}}</h4>
+                                        <small>{{user.rol}}</small>
+                                    </div>
+                                </div>
+                                <div class="contact">
+                                    <i class="fa-solid fa-circle-user"></i>
+                                </div>
+                            </div>
+                            }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</app-base>

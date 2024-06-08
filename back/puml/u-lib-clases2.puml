@@ -1,0 +1,77 @@
+@startuml
+
+class Libro {
+    -ISBN: string (PK)
+    -Titulo: string
+    -Precio: decimal
+    +getISBN(): string
+    +setISBN(ISBN: string): void
+    +getTitulo(): string
+    +setTitulo(titulo: string): void
+    +getPrecio(): decimal
+    +setPrecio(precio: decimal): void
+}
+
+class Editorial {
+    -ID: int (PK)
+    -Nombre: string
+    -Ciudad: string
+    -Pais: string
+    +getID(): int
+    +setID(ID: int): void
+    +getNombre(): string
+    +setNombre(nombre: string): void
+    +getCiudad(): string
+    +setCiudad(ciudad: string): void
+    +getPais(): string
+    +setPais(pais: string): void
+}
+
+class Autor {
+    -ID: int (PK)
+    -Nombre: string
+    -Nacionalidad: string
+    -FechaNacimiento: date
+    +getID(): int
+    +setID(ID: int): void
+    +getNombre(): string
+    +setNombre(nombre: string): void
+    +getNacionalidad(): string
+    +setNacionalidad(nacionalidad: string): void
+    +getFechaNacimiento(): date
+    +setFechaNacimiento(fecha: date): void
+}
+
+class Usuario {
+    -ID: int (PK)
+    -Nombre: string
+    -Rol: string
+    +getID(): int
+    +setID(ID: int): void
+    +getNombre(): string
+    +setNombre(nombre: string): void
+    +getRol(): string
+    +setRol(rol: string): void
+}
+
+class PrecioModificado {
+    -ID: int (PK)
+    -FechaModificacion: date
+    -Porcentaje: decimal
+    +getID(): int
+    +setID(ID: int): void
+    +getFechaModificacion(): date
+    +setFechaModificacion(fecha: date): void
+    +getPorcentaje(): decimal
+    +setPorcentaje(porcentaje: decimal): void
+}
+
+Usuario "1" -- "0..*" PrecioModificado : RealizaModificacion
+Usuario "1" -- "0..*" Libro : ModificaPrecio
+Usuario "1" -- "0..*" Autor : ModificaPrecioAutor
+PrecioModificado "1" -- "1" Libro : Modifica
+PrecioModificado "1" -- "1" Autor : Modifica
+Libro "1" -- "1" Editorial : Pertenece_a
+Libro "0..*" -- "0..*" Autor : Escrito_por
+
+@enduml

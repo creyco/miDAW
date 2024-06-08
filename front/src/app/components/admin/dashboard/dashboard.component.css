@@ -1,0 +1,111 @@
+.container-main {
+    margin: auto;
+    margin-top: 8rem;
+    width: 95%;
+    transition: all 0.4s ease-in-out;
+}
+
+.expand {
+    width: -webkit-fill-available;
+    margin-left: 32vh;
+    transition: all 0.4s ease-in-out;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin-top: 1rem;
+}
+
+.card-single {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    color: var(--main-color);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(154, 160, 185, .05), 0 15px 40px rgba(166, 173, 201, .2);
+    transition: all 0.4s ease-in-out;
+}
+
+.card-single i {
+    font-size: 3.2rem;
+}
+
+.card-single h1 {
+    color: var(--main-color) !important;
+}
+
+.card-single span {
+    color: var(--text-grey) !important;
+}
+
+.card-header {
+    padding: 1rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.card-header button {
+    background: var(--main-color);
+    border-radius: 10px;
+    color: #fff;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    border: 1px solid var(--main-color);
+}
+
+
+tr td:last-child {
+    display: flex;
+    align-items: center;
+}
+
+.table-responsive h3{
+    text-align: center;
+}
+
+.customer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem .7rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+}
+
+.info h4 {
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.info small {
+    font-weight: 600;
+    color: var(--text-grey);
+}
+
+.contact {
+    cursor: pointer;
+}
+
+.contact i {
+    font-size: 2.5rem;
+}
+
+button {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+

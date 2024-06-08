@@ -1,0 +1,78 @@
+@startuml 
+title "Diagrama de Casos de Uso de una Librería"
+!theme blueprint
+left to right direction
+actor Usuario as User
+
+package "Casos de Uso"  as UC {
+    User --> (Gestión de Editorial)
+    User --> (Gestión de Libro)
+    User --> (Gestión de Autor)
+    User --> (Consultas)
+    User --> (Ajustar Precios de Venta)
+    User --> (Disminuir Precios de Libros por Autor)
+}
+
+package  "Gestión de Editorial" {
+    (Agregar Editorial)
+    (Modificar Editorial)
+    (Eliminar Editorial)
+}
+
+package  "Gestión de Libro" {
+    (Agregar Libro)
+    (Modificar Libro)
+    (Eliminar Libro)
+}
+
+package  "Gestión de Autor" {
+    (Agregar Autor)
+    (Modificar Autor)
+    (Eliminar Autor)
+}
+
+package  "Consultas" {
+    (Consultar Libros por Autor)
+    (Consultar Datos de un Libro por ISBN)
+    (Consultar Editoriales Registradas)
+}
+
+User -[#red]> (Validar Asociación de Autor a Libro) : <<extend>>
+User -[#yellow]> (Modificar Editorial con Validación) : <<include>>
+User -[#yellow]> (Eliminar Editorial con Validación) : <<include>>
+
+note right of User : Rol: Administrador
+note left of User : Rol: Vendedor
+
+@enduml
+
+@startuml
+left to right direction
+actor Administrador as Admin
+actor Vendedor as Vend
+actor Cliente as Client
+
+rectangle "Casos de Uso" as UC {
+    Admin --> (Agregar Editorial)
+    Admin --> (Modificar Editorial)
+    Admin --> (Eliminar Editorial)
+    Vend --> (Agregar Libro)
+    Vend --> (Modificar Libro)
+    Vend --> (Eliminar Libro)
+    Vend --> (Agregar Autor)
+    Vend --> (Modificar Autor)
+    Vend --> (Eliminar Autor)
+    Vend --> (Consultar Libros por Autor)
+    Vend --> (Consultar Datos de un Libro por ISBN)
+    Vend --> (Consultar Editoriales Registradas)
+    Admin --> (Ajustar Precios de Venta)
+    Admin --> (Disminuir Precios de Libros por Autor)
+}
+
+Vend --> (Validar Asociación de Autor a Libro) : <<extend>>
+Admin --> (Modificar Editorial con Validación) : <<include>>
+Admin --> (Eliminar Editorial con Validación) : <<include>>
+
+Client --> UC
+@enduml
+

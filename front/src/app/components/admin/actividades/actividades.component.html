@@ -1,0 +1,32 @@
+<app-base>
+    <main>
+        <div class="card container_Table">
+
+            @if (actividadService.tabActividades) {
+            @if (!actividadService.formAdd) {
+            <div style="padding: 5px 0px 5px 10px;">
+                <button title="Agregar" (click)="actividadService.formAdd=true">
+                    <i class="fa-solid fa-square-plus"></i>
+                </button>
+            </div>
+            @if(actividadService.loading){
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar><br>
+            <h2>Cargando Actividades...</h2>
+            }@else if (actividadService.actividades.length > 0) {
+            <app-tabla_actividades></app-tabla_actividades>
+            }@else{
+            <h2>No hay Actividades Disponibles...</h2>
+            }
+            }@else{<!-- CREAR ACTIVIDAD -->
+
+            <app-formAddAct></app-formAddAct>
+            }
+            }
+            @if(actividadService.formEdit && !actividadService.tabActividades){ <!-- EDITAR ACTIVIDAD -->
+
+            <app-formEditAct></app-formEditAct>
+            }
+
+        </div>
+    </main>
+</app-base>

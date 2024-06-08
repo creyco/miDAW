@@ -1,0 +1,68 @@
+@startuml
+
+!theme mars
+left to right direction
+
+skinparam package {
+    layout new
+}
+
+actor "Usuario Autenticado" as UsuarioAutenticado
+actor "Usuario No Autenticado" as UsuarioNoAutenticado
+
+
+rectangle "Sistema de Gestion de Actividades" {
+
+ usecase "Gestión de Actividades" as GestionTareas
+ usecase "Gestión de Registros Históricos" as GestionRegistrosHistoricos
+ usecase "Gestión de Usuarios" as GestionUsuarios
+ usecase "Autenticar Usuarios" as AutenticarUsuarios
+
+ usecase "Crear Actividades" as CrearTareas
+ usecase "Modificar Actividades" as ModificarTareas
+ usecase "Consultar Actividades" as ConsultarTareas
+ usecase "Baja Actividades" as BajaTareas
+
+ usecase "Registrar Historial Actividades" as RegistrarHistorialTareas
+ usecase "Consultar Historial Actividades" as ConsultarHistorialTareas
+
+
+ usecase "Crear Usuarios" as CrearUsuarios
+ usecase "Modificar Usuarios" as ModificarUsuarios
+ usecase "Suspension Usuarios" as SuspensionUsuarios
+ usecase "Consultar Usuarios" as ConsultarUsuarios
+
+}
+
+UsuarioAutenticado --- AutenticarUsuarios
+AutenticarUsuarios <.- GestionTareas: "<<extend>>"
+AutenticarUsuarios <.- GestionRegistrosHistoricos: "<<extend>>"
+AutenticarUsuarios <.- GestionUsuarios: "<<extend>>"
+
+
+:UsuarioAutenticado: <-r- :UsuarioNoAutenticado:
+
+
+GestionTareas <.- CrearTareas: "<<extend>>"
+GestionTareas <.- ConsultarTareas: "<<extend>>"-
+GestionTareas <.- BajaTareas: "<<extend>>"
+GestionTareas <.- ModificarTareas: "<<extend>>"
+
+BajaTareas -.> ConsultarTareas: "<<include>>"
+ModificarTareas -.> ConsultarTareas: "<<include>>"
+
+GestionRegistrosHistoricos <.- RegistrarHistorialTareas: "<<extend>>"
+GestionRegistrosHistoricos <.- ConsultarHistorialTareas: "<<extend>>"
+
+
+GestionUsuarios <.- CrearUsuarios: "<<extend>>"
+
+GestionUsuarios <.- ModificarUsuarios: "<<extend>>"
+GestionUsuarios <.- SuspensionUsuarios: "<<extend>>"
+
+GestionUsuarios <.- ConsultarUsuarios: "<<extend>>"
+
+SuspensionUsuarios -.> ConsultarUsuarios: "<<include>>"
+ModificarUsuarios -.> ConsultarUsuarios: "<<include>>"
+@enduml
+

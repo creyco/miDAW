@@ -1,0 +1,20 @@
+@startuml
+
+left to right direction
+actor Usuario as U
+rectangle "Aplicación de Compra por Internet" {
+  U -- (Autenticación)
+  U -- (Ver Catálogo)
+  U -- (Agregar Producto al Carro)
+  U -- (Eliminar Producto del Carro)
+  U -- (Finalizar Pedido)
+  U -- (Ingresar Datos Personales)
+  U -- (Seleccionar Forma de Pago)
+
+  (Ver Catálogo) ..> (Mostrar Productos) : include
+  (Agregar Producto al Carro) ..> (Ver Catálogo) : include
+  (Eliminar Producto del Carro) ..> (Ver Catálogo) : include
+  (Finalizar Pedido) ..> (Ingresar Datos Personales) : extend
+  (Finalizar Pedido) ..> (Seleccionar Forma de Pago) : extend
+}
+@enduml

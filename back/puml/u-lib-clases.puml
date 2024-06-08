@@ -1,0 +1,32 @@
+@startuml
+
+class Libro {
+     id: int (PK)
+    -Titulo: string
+    -Precio: decimal
+    -Autores: Autor[]
+    
+}
+
+class Autor {
+    -ID: int (PK)
+    -Nombre: string
+    -Apellido: string 
+}
+
+class Libreria {
+    -ID: int (PK)
+    -Nombre: string
+    -Libros: Libro[]
+    +agregarLibro(libro: Libro)
+    +eliminarLibro(libro: Libro)
+    -modificarLibro(libro: Libro)
+    
+}
+
+
+Libreria "1" -- "0..*" Libro : Tiene
+'Libro "1" -- "0..*" Autor : Escribio
+Autor "1" <-- "0..*" Libro: Escribio
+
+@enduml

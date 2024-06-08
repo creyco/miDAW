@@ -1,0 +1,55 @@
+<div class="content-Form">
+  <div class="header-table ">
+    <button title="Volver" (click)="vehiService.formAdd=false;vehiService.imgVehiculo=undefined">
+      <i class="fa-solid fa-square-caret-left"></i>
+    </button>
+  </div>
+
+  <h2>Agregar Vehiculo</h2><br>
+  <form (submit)="vehiService.createVehiculo($event)" enctype="multipart/form-data" id="formAddVehiculo">
+
+    <div class="inputGruop">
+      <label for="marca_modelo">Marca y Modelo:</label>
+      <input type="text" name="marca_modelo" id="marca_modelo" [required]="true" minlength="5" maxlength="50">
+    </div>
+
+    <div class="inputGruop">
+      <label for="patente">Patente:</label>
+      <input type="text" name="patente" id="patente" [required]="true" minlength="3" maxlength="20">
+    </div>
+
+    <div class="inputGruop">
+      <label for="color">Color:</label>
+      <input type="text" name="color" id="color" [required]="true" minlength="2" maxlength="20">
+    </div>
+
+    <div class="inputGruop">
+      <label for="duenio">Dueño:</label>
+      <select name="duenio" id="duenio" [required]="true">
+        <option [value]="0" [ariaChecked]="true">Seleccione Cliente</option>
+        @for (cliente of cliService.clientes; track $index) {
+        <option [value]="cliente.id_cliente">{{cliente.apellido}} {{cliente.nombre}}</option>
+        }@empty {<option [value]="0" [ariaChecked]="true">No hay Clientes Disponibles...</option> }
+      </select>
+    </div>
+
+    <div class="inputGruop">
+      <label for="imagen">Imagen:</label>
+      <div class="containerInputFile  ">
+        <input type="file" name="imagen" id="imagen" accept="image/*" title="Insertar"
+          (change)="vehiService.insertImg($event)">
+        @if (vehiService.imgVehiculo) {
+        <img [src]="vehiService.imgVehiculo" [alt]="vehiService.imgVehiculo">
+        }@else {
+        <i class="fa-solid fa-car"></i>
+        <span>Insertar Imagen</span>
+        }
+      </div>
+    </div>
+
+    <div class="container-Btn-Modal">
+      <button type="reset" (click)="vehiService.imgVehiculo=''" title="Cancelar" id="btnCancelar">Cancelar</button>
+      <button type="submit" title="Agregar" id="btnAgregar">Agregar</button>
+    </div>
+  </form>
+</div>

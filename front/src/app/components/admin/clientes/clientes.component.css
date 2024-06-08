@@ -1,0 +1,127 @@
+.card h5,h3{
+    text-align: center;
+}
+.container-vehiculo button {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    color: var(--main-color);
+    font-size: 30px;
+    padding: 8px 12px 8px 12px;
+    border: none;
+    margin-right: auto;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.5s ease-in-out;
+}
+
+.container-vehiculo button:hover {
+    background: var(--main-color);
+    color: white;
+    cursor: pointer;
+}
+
+.container-vehiculo h2,h4{
+    text-align: center;
+    margin: 0;
+}
+
+.header-table {
+    display: flex;
+    padding: 5px 0px 10px 10px;
+    align-items: center;
+}
+.header-table #btnAdd i{
+    padding-right: 0px !important;
+    font-size: 26px;
+}
+.header-table button{
+    font-size: 20px !important
+}
+.header-table button i{
+    padding-right: 5px;
+    font-size: 25px;
+}
+
+.recent-grid{
+    margin-top: 10px;
+    grid-gap: 1.5rem;
+}
+
+.recent-grid .card{
+    padding: 5px 5px 5px 10px;
+}
+
+.inputGruop{
+    padding: 0!important;
+}
+.containerImg {
+    padding: 0 !important;
+}
+td img {
+    width: 100%;
+    max-width: 130px;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+}
+
+tr:hover{
+    cursor: pointer;
+}
+
+
+.btnActive{
+    background: var(--main-color) !important;
+    color: white !important;
+}
+
+
+form .inputGruop {
+    padding: 10px !important;
+}
+
+.containerInputFile{
+    display: flex;
+    position: relative;
+    margin: auto;
+    width: 100%;
+    height: 170px;
+    margin: auto;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px dashed #cacaca;
+    background-color: aliceblue;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.containerInputFile i{
+    font-size: 9rem;
+    color: #949494;
+}
+
+ .containerInputFile input[type="file"]{    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    cursor: pointer;
+ }
+ 
+ .paginator{
+   display: inline-flex;
+    width: 75%;
+    align-items: center;
+    justify-content: space-between;
+ }
+  .paginator i{
+    font-size: 1.6rem;
+    cursor: pointer;
+  } 

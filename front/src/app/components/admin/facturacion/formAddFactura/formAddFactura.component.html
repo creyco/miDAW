@@ -1,0 +1,87 @@
+<div class="content-Form">
+  <div class="header-table ">
+    <button title="Volver" (click)="facService.formAdd=false; facService.vehiculoSearch=undefined;facService.msj=''">
+      <i class="fa-solid fa-square-caret-left"></i>
+    </button>
+  </div>
+  <h2>Agregar Factura</h2><br><!-- AGREGAR FACTURA -->
+  <div class="inputGruop">
+    <label for="search">Buscar Vehiculo:</label>
+    <div class="content">
+      <input #ipt style="width: 90%;" minlength="5" maxlength="10" placeholder="Ingrese Patente" type="search"
+        name="search" id="search" autocomplete="off" required="true">
+      <i class="fa-solid fa-magnifying-glass" title="Buscar" (click)="facService.searchVehiculo(ipt.value)"></i>
+    </div>
+  </div><br>
+
+  @if (facService.vehiculoSearch) {
+  <form class="formRoot">
+    <div id="container1">
+      <div class="inputGruop">
+        <div class="containerImg">
+          <img [src]="facService.vehiculoSearch.pathImage" [alt]="facService.vehiculoSearch.marca_modelo">
+        </div>
+      </div>
+
+      <div class="inputGruop">
+        <label for="marca_modelo">Marca y Modelo:</label>
+        <input type="text" readonly [value]="facService.vehiculoSearch.marca_modelo" name="marca_modelo"
+          id="marca_modelo" [required]="true" minlength="5" maxlength="50">
+      </div>
+
+      <div class="inputGruop">
+        <label for="patente">Patente:</label>
+        <input type="text" readonly [value]="facService.vehiculoSearch.patente" name="patente" id="patente"
+          [required]="true" minlength="3" maxlength="20">
+      </div>
+
+      <div class="inputGruop">
+        <label for="duenio">Dueño:</label>
+        <input type="text" readonly
+          [value]="facService.vehiculoSearch.duenio.apellido+' '+facService.vehiculoSearch.duenio.nombre" name="duenio"
+          id="duenio" [required]="true" minlength="3" maxlength="30">
+      </div>
+
+      <div class="inputGruop">
+        <label for="cuit">Cuit:</label>
+        <input type="text" readonly [value]="facService.vehiculoSearch.duenio.cuit" name="cuit" id="cuit"
+          [required]="true" minlength="5" maxlength="30">
+      </div>
+    </div>
+
+    <div id="container2">
+      @if (facService.vehiculoSearch.actividades.length>0) {
+      <h3>Actividades Realizadas en el Vehiculo:</h3>
+      <form #formImporte (submit)="calcularImporte($event)">
+        @for (act of facService.vehiculoSearch.actividades; track index) {
+        <div class="container-Precio inputGruop">
+          <strong>
+            <h5>- {{act.descripcion}}{{index}}</h5>
+          </strong><input type="number" [name]="'precio'+index+1" placeholder="$ 0" required="true" minlength="0"
+            max="99999999">
+        </div>
+        }
+        <div class="inputGruop">
+          <h4>Importe Total: {{facService.importeTotal | currency}} .</h4>
+        </div>
+        <div class="header-table">
+          <button style="margin: auto;" type="submit" (click)="facService.importeTotal=0" title="Calcular">
+            <i class="fa-solid fa-calculator"></i>
+            Calcular Importe</button>
+        </div>
+      </form>
+
+      <div class="container-Btn-Modal" style="width: 100%;">
+        <button type="reset" title="Cancelar" id="btnCancelar">Cancelar</button>
+        <button type="button" [disabled]="facService.importeTotal<1 && btn_activate"
+          (click)="facService.createFactura(formImporte)" title="Agregar" id="btnAgregar">Agregar</button>
+      </div>
+      }@else {
+      <h4 style="color: rgb(223, 27, 27);">Este Vehiculo no Tiene Actividades Realizadas !</h4>
+      }
+    </div>
+  </form>
+  }@else {
+  <h4 style="color: rgb(223, 27, 27);">{{facService.msj}}</h4>
+  }
+</div>

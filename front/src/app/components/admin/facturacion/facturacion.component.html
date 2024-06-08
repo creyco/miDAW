@@ -1,0 +1,27 @@
+<app-base>
+  <main>
+    <div class="card container_Table">
+      @if (!facService.formAdd ) {
+      <div style="padding: 5px 0px 5px 10px;" class="header-table">
+
+        <button title="Agregar" (click)="facService.formAdd=true;  facService.importeTotal= 0">
+          <i class="fa-solid fa-square-plus"></i>
+        </button>
+      </div>
+      @if(facService.loading){
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar><br>
+      <h2 style="text-align: center;">Cargando Facturas...</h2>
+      }@else if (facService.facturas.length > 0) {
+
+      <app-tabla-facturas></app-tabla-facturas>
+      }@else {
+      <h2>No hay Facturas Emitidas Disponibles...</h2>
+      }
+      }
+      @if (facService.formAdd) {<!-- AGREGAR FACTURA -->
+
+      <app-formAddFactura></app-formAddFactura>
+      }
+    </div>
+  </main>
+</app-base>

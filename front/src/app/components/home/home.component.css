@@ -1,0 +1,153 @@
+ main {
+   background-image: url(https://static.vecteezy.com/system/resources/previews/036/594/338/non_2x/ai-generated-car-repair-advertisment-background-with-copy-space-free-photo.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   background-color: aliceblue;
+   filter: grayscale(50%);
+   z-index: -1;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   font-family: 'Poppins', sans-serif;
+ }
+
+ .logo {
+   text-align: center;
+   padding: 1rem;
+ }
+
+ .logo i {
+  font-size: 6rem;
+ }
+
+ .logo h1 {
+   display: flex;
+   align-items: stretch;
+   justify-content: center;
+   column-gap: 10px;
+   font-size: 4.5rem;
+   font-weight: bold;
+   font-family: 'Poppins', sans-serif;
+ }
+
+ .logo h1,
+ h4 {
+   margin: 0;
+ }
+
+
+ .loginContainer {
+   color: azure;
+   background-color: rgb(37 37 37 / 45%);
+   width: 100%;
+   height: 100%;
+
+ }
+
+ .loginContainer h2 {
+   margin: 0;
+   text-align: center;
+   font-weight: 500;
+   font-size: 26px;
+ }
+
+ #formLogin {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex-wrap: nowrap;
+   width: 100%;
+   margin-top: 10%;
+ }
+
+
+ .inputGruop {
+   display: flex;
+   flex-direction: column;
+   padding: 1.5rem;
+   width: auto !important;
+ }
+
+ .inputGruop label {
+  color: #fff;
+ }
+
+ .inputGruop .content {
+   width: 400px;
+   height: 50px;
+   background-color:rgb(37 37 37 / 25%);
+   border-bottom: 2.5px solid darkgrey;
+   border-radius: 8px;
+   display: flex;
+   align-items: center;
+   transition: all 0.4s ease-in-out;
+ }
+
+.content i {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+ .inputGruop input {
+   width: 88%;
+   height: 65%;
+   color: azure;
+   font-size: 18px;
+   padding: 5px;
+   background-color: transparent !important;
+   border: none;
+   font-family: 'Poppins', sans-serif;
+ }
+
+ .inputGruop input:focus-visible {
+   outline: none;
+ }
+
+ .inputGruop input::placeholder {
+   color: aliceblue;
+ }
+.inputGruop input:-internal-autofill-selected {
+  background-color: transparent !important;
+}
+ .inputGruop input[type="password"]{
+   letter-spacing: 5px;
+ }
+
+ .inputGruop label {
+   padding: 5px;
+   font-size: 20px;
+ }
+
+ .inputGruop:focus-within .content {
+    background-color: rgb(37 37 37 / 90%);
+ }
+
+ #btn_ingresar {
+   width: 150px;
+   height: 45px;
+   margin: auto;
+   background-color: var(--main-color);
+   color: azure;
+   font-size: 20px;
+   font-weight: 500;
+   padding: 5px;
+   border: none;
+   border-radius: 8px;
+   margin-top: 4rem;
+   font-family: 'Poppins', sans-serif;
+   transition: all 0.5s ease-in-out;
+ }
+
+ #btn_ingresar:hover {
+   background-color: white;
+   cursor: pointer;
+   color: var(--main-color);
+ }
+
+ #btn_ingresar:disabled{
+  background-color: darkgrey;
+  color: white;
+ }
+
+ 

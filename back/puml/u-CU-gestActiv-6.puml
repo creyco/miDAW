@@ -1,0 +1,50 @@
+@startuml
+
+left to right direction
+
+actor Usuario as U
+
+rectangle "Sistema de Gestión de Actividades" {
+    U -- (Autenticación y Autorización)
+
+    (Autenticación y Autorización) -- (Crear actividad)
+    (Autenticación y Autorización) -- (Modificar actividad)
+    (Autenticación y Autorización) -- (Visualizar información de actividad)
+    (Autenticación y Autorización) -- (Visualizar registros de auditoría)
+    (Autenticación y Autorización) -- (Exportar datos a CSV)
+
+    rectangle "Tareas del Administrador" {
+        (Crear actividad)
+        (Modificar actividad)
+        (Visualizar información de actividad)
+        (Visualizar registros de auditoría)
+        (Exportar datos a CSV)
+    }
+
+    rectangle "Tareas del Ejecutor" {
+        (Visualizar actividades asignadas pendientes)
+        (Marcar actividad como finalizada)
+        (Marcar actividad como eliminada)
+    }
+
+    U --> (Especificar razón o comentario) : <<extend>>
+    U --> (Seleccionar rango de fechas) : <<extend>>
+
+    include "Visualizar información de actividad" {
+        (Visualizar registros de auditoría)
+    }
+
+    include "Autenticación y Autorización" {
+        (Crear actividad)
+        (Modificar actividad)
+        (Visualizar información de actividad)
+        (Visualizar registros de auditoría)
+        (Exportar datos a CSV)
+        (Visualizar actividades asignadas pendientes)
+        (Marcar actividad como finalizada)
+        (Marcar actividad como eliminada)
+    }
+}
+
+@enduml
+

@@ -1,0 +1,65 @@
+<div class="content-Form">
+  <button title="Volver" (click)="userService.formAdd=false;userService.tabUser=true">
+    <i class="fa-solid fa-square-caret-left"></i>
+  </button>
+  <h2>Agregar Usuario</h2>
+  <form #formAddUser (submit)="userService.createUser($event)">
+    <div class="inputGruop">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" -="2" maxlength="50" required="true">
+    </div>
+
+    <div class="inputGruop">
+      <label for="apellido">Apellido:</label>
+      <input type="text" name="apellido" id="apellido" minlength="2" maxlength="50" required="true">
+    </div>
+
+    <div class="inputGruop">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" minlength="5" maxlength="50" required="true" autocomplete="on">
+    </div>
+    <div class="inputGruop">
+      <label for="nombre_usuario">Nombre de Usuario:</label>
+      <input type="text" name="nombre_usuario" id="nombre_usuario" minlength="6" maxlength="50" required="true">
+    </div>
+
+    <div class="inputGruop">
+      <label for="contrasenia">contrasenia:</label>
+      <div class="content">
+        <input #pass type="password" name="contrasenia" id="contrasenia" minlength="6" maxlength="50" required="true"
+          autocomplete="off">
+        <i class="fa-solid"
+          [ngClass]="{'fa-eye-slash': globalService.showPassword, 'fa-eye': !globalService.showPassword}"
+          (click)="globalService.togglePassword(pass)" [title]="pass.type==='password'?'Ver':'Ocultar'"></i>
+      </div>
+    </div>
+
+    <div class="inputGruop">
+      <label for="rol">Rol:</label>
+      <select name="rol" id="rol" [value]="" required="true">
+        <option value="" aria-checked="false">Seleccione Rol</option>
+        <option value="Administrador">Administrador</option>
+        <option value="Mecanico">Mecanico</option>
+      </select>
+    </div>
+
+    <div class="inputGruop">
+      <label for="imagen">Imagen:</label>
+      <div class="containerInputFile">
+        <input type="file" name="imagen" id="imagen" accept="image/*" title="Insertar"
+          (change)="userService.insertImg($event)">
+        @if (userService.imgUsuario) {
+        <img [src]="userService.imgUsuario" [alt]="userService.imgUsuario">
+        }@else {
+        <i class="fa-solid fa-car"></i>
+        <span>Insertar Imagen</span>
+        }
+      </div>
+    </div>
+
+    <div class="container-Btn-Modal">
+      <button type="reset" title="Cancelar" id="btnCancelar">Cancelar</button>
+      <button type="submit" title="Agregar" id="btnAgregar">Agregar</button>
+    </div>
+  </form>
+</div>

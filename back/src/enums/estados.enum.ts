@@ -1,0 +1,3 @@
+export enum estadoActEnum {
+    PENDIENTE = "PENDIENTE", ENPROCESO = "EN PROCESO", TERMINADA = "TERMINADA"
+}

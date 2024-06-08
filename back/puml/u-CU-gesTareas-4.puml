@@ -1,0 +1,99 @@
+@startuml
+
+
+skinparam {
+    pageOrientation landscape
+    shadowing true
+    backgroundColor #F5F5F5
+    defaultFontName Arial
+    defaultFontSize 14
+    defaultFontColor #333333
+
+    usecase {
+        BackgroundColor #FFCC99
+        BorderColor #FF8000
+        FontColor #000000
+        BorderThickness 2
+        RoundCorner 20
+        MinWidth 200
+        MinHeight 50
+        Padding 10
+    }
+
+    actor {
+        BackgroundColor #FFFF99
+        BorderColor #FFCC00
+        FontColor #000000
+        BorderThickness 2
+        RoundCorner 20
+        Padding 10
+    }
+}
+
+'theme BlueViolet
+
+left to right direction
+
+skinparam package {
+    layout new
+}
+
+actor "Usuario Autenticado" as UsuarioAutenticado
+actor "Usuario No Autenticado" as UsuarioNoAutenticado
+
+
+rectangle "Sistema de Gestion de Tareas" {
+
+    usecase "Gestión de Tareas" as GestionTareas
+    usecase "Gestión de Registros Históricos" as GestionRegistrosHistoricos
+    usecase "Gestión de Usuarios" as GestionUsuarios
+    usecase "Autenticar Usuarios" as AutenticarUsuarios
+
+    usecase "Crear Tareas" as CrearTareas
+    usecase "Modificar Tareas" as ModificarTareas
+    usecase "Consultar Tareas" as ConsultarTareas
+    usecase "Eliminar Tareas" as EliminarTareas
+
+    usecase "Registrar Historial Tareas" as RegistrarHistorialTareas
+    usecase "Consultar Historial Tareas" as ConsultarHistorialTareas
+
+
+    usecase "Crear Usuarios" as CrearUsuarios
+    usecase "Modificar Usuarios" as ModificarUsuarios
+    usecase "Suspension Usuarios" as SuspensionUsuarios
+    usecase "Consultar Usuarios" as ConsultarUsuarios
+
+}
+
+UsuarioAutenticado --- AutenticarUsuarios
+AutenticarUsuarios <.- GestionTareas: "<<extend>>"
+AutenticarUsuarios <.- GestionRegistrosHistoricos: "<<extend>>"
+AutenticarUsuarios <.- GestionUsuarios: "<<extend>>"
+
+
+:UsuarioAutenticado: <-r- :UsuarioNoAutenticado:
+
+
+GestionTareas <.- CrearTareas: "<<extend>>"
+GestionTareas <.- ConsultarTareas: "<<extend>>"-
+GestionTareas <.- EliminarTareas: "<<extend>>"
+GestionTareas <.- ModificarTareas: "<<extend>>"
+
+EliminarTareas -.> ConsultarTareas: "<<include>>"
+ModificarTareas -.> ConsultarTareas: "<<include>>"
+
+GestionRegistrosHistoricos <.- RegistrarHistorialTareas: "<<extend>>"
+GestionRegistrosHistoricos <.- ConsultarHistorialTareas: "<<extend>>"
+
+
+GestionUsuarios <.- CrearUsuarios: "<<extend>>"
+
+GestionUsuarios <.- ModificarUsuarios: "<<extend>>"
+GestionUsuarios <.- SuspensionUsuarios: "<<extend>>"
+
+GestionUsuarios <.- ConsultarUsuarios: "<<extend>>"
+
+SuspensionUsuarios -.> ConsultarUsuarios: "<<include>>"
+ModificarUsuarios -.> ConsultarUsuarios: "<<include>>"
+
+@enduml

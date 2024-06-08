@@ -1,0 +1,18 @@
+@startuml
+
+start
+:Iniciar;
+if (¿Es Administrador?) then (Sí)
+  :Agregar Porcentaje de Modificación;
+else (No)
+  :Vendedor;
+endif
+:Seleccionar Opción (Global o por Autor);
+if (Global) then (Sí)
+  :Aplicar Porcentaje Global;
+else (No)
+  :Seleccionar Autor;
+  :Aplicar Porcentaje por Autor;
+endif
+stop
+@enduml

@@ -1,0 +1,47 @@
+classDiagram
+    class Libro {
+        - ID: int (PK)
+        - Titulo: string
+        - Precio: decimal        
+        + getTitulo(): string        
+        + getPrecio(): decimal        
+    }
+
+    class Editorial {
+        - ID: int (PK)
+        - Nombre: string
+        - Ciudad: string
+        - Pais: string
+        
+    }
+
+    class Autor {
+        - ID: int (PK)
+        - Nombre: string
+        - Nacionalidad: string
+        - FechaNacimiento: date
+        
+    }
+
+    class Usuario {
+        - ID: int (PK)
+        - Nombre: string
+        - Rol: string               
+        + getRol(): string
+        + setRol(rol: string): void
+    }
+
+    class PrecioModificado {
+        - ID: int (PK)
+        - FechaModificacion: date
+        - Porcentaje: decimal
+        
+    }
+
+    Usuario "1" -- "0..*" PrecioModificado : RealizaModificacion
+    Usuario "1" -- "0..*" Libro : ModificaPrecio
+    Usuario "1" -- "0..*" Autor : ModificaPrecioAutor
+    PrecioModificado "1" -- "1" Libro : Modifica
+    PrecioModificado "1" -- "1" Autor : Modifica
+    Libro "1" -- "1" Editorial : Pertenece_a
+    Libro "0..*" -- "0..*" Autor : Escrito_por

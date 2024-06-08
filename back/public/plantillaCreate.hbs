@@ -1,0 +1,36 @@
+<html lang='en'>
+
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Respuesta Creacion de Usuario</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; padding: 0; } .container
+      { background-color: #252525; width: fit-content; padding: 20px;
+      border-radius: 8px; color: azure; text-align: center; } button { width:
+      fit-content; height: 50px; background: #3B71CA; padding: 15px; margin:
+      auto; text-align: center; border: none; border-radius: 8px; color: azure;
+      font-size: 16px; } button:hover { background-color: #1b4d9e; cursor:
+      pointer; }
+    </style>
+  </head>
+
+  <body>
+    <div class='container'>
+      <h1>Usuario Creado con Exito...</h1>
+      <h2>Hola
+        {{nombre}}
+        {{apellido}}
+        se a creado tu usuario en ASTRA MECANICA & DETAILING.</h2>
+      <h2>Podes ingresar con tu Nombre de Usuario:
+        {{nombre_usuario}}
+        y contrasenia:
+        {{contrasenia}}.
+      </h2>
+      <a href='http://localhost:4200/home'>
+        <button title='Ir al Sitio'>Ir al Sitio</button>
+      </a>
+    </div>
+  </body>
+
+</html>

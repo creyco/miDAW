@@ -1,0 +1,665 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">my-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ClientesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/admin/clientes/clientes.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-clientes</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                                <code><a href="../components/BaseComponent.html" target="_self" >BaseComponent</a></code>
+                                <code><a href="../components/VehiculosComponent.html" target="_self" >VehiculosComponent</a></code>
+                                <code><a href="../components/TablaClientesComponent.html" target="_self" >TablaClientesComponent</a></code>
+                                <code><a href="../components/FormAddClienteComponent.html" target="_self" >FormAddClienteComponent</a></code>
+                                <code><a href="../components/FormEditClienteComponent.html" target="_self" >FormEditClienteComponent</a></code>
+                            <code>MatProgressBarModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./clientes.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./clientes.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(vehiService: <a href="../injectables/VehiculoService.html" target="_self">VehiculoService</a>, cliService: <a href="../injectables/ClientesService.html" target="_self">ClientesService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/admin/clientes/clientes.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>vehiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VehiculoService.html" target="_self" >VehiculoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cliService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ClientesService.html" target="_self" >ClientesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/app/components/admin/clientes/clientes.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { MatProgressBarModule } from &#x27;@angular/material/progress-bar&#x27;;
+import { VehiculoService } from &#x27;../../../services/vehiculo.service&#x27;;
+import { VehiculosComponent } from &#x27;../vehiculos/vehiculos.component&#x27;;
+import { ClientesService } from &#x27;../../../services/clientes.service&#x27;;
+import { BaseComponent } from &#x27;../../base/base.component&#x27;;
+import { TablaClientesComponent } from &#x27;./tabla-clientes/tabla-clientes.component&#x27;;
+import { FormAddClienteComponent } from &#x27;./formAddCliente/formAddCliente.component&#x27;;
+import { FormEditClienteComponent } from &#x27;./formEditCliente/formEditCliente.component&#x27;;
+
+@Component({
+  selector: &#x27;app-clientes&#x27;,
+  templateUrl: &#x27;./clientes.component.html&#x27;,
+  standalone: true,
+  styleUrls: [&#x27;./clientes.component.css&#x27;],
+  imports: [CommonModule, BaseComponent, VehiculosComponent, TablaClientesComponent, FormAddClienteComponent, FormEditClienteComponent, MatProgressBarModule]
+})
+export default class ClientesComponent {
+
+  constructor(protected vehiService: VehiculoService, protected cliService: ClientesService) { }
+
+  ngOnInit(): void {
+    this.vehiService.getVehiculos()
+    this.cliService.getClientes()
+  }
+
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-base&gt;
+    &lt;main&gt;
+        &lt;div class&#x3D;&quot;card container_Table&quot;&gt;
+            @if(cliService.tabClientes){
+            @if(!cliService.formAdd &amp;&amp; !cliService.formEdit){
+            &lt;div class&#x3D;&quot;header-table&quot;&gt;
+
+                &lt;button title&#x3D;&quot;Agregar&quot; id&#x3D;&quot;btnAdd&quot; (click)&#x3D;&quot;cliService.formAdd&#x3D;true&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa-solid fa-square-plus&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+
+                &lt;button title&#x3D;&quot;Clientes&quot; [class.btnActive]&#x3D;&quot;cliService.tabClientes&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa-solid fa-address-book&quot;&gt;&lt;/i&gt;
+                    Clientes
+                &lt;/button&gt;
+                &lt;button title&#x3D;&quot;Vehiculos&quot;
+                    (click)&#x3D;&quot;cliService.tabClientes&#x3D;false;vehiService.tabVehiculos&#x3D;true;cliService.formAdd&#x3D;false;cliService.formEdit&#x3D;false;&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa-solid fa-car&quot;&gt;&lt;/i&gt;
+                    Vehiculos
+                &lt;/button&gt;
+            &lt;/div&gt;
+            @if(cliService.loading){
+            &lt;mat-progress-bar mode&#x3D;&quot;indeterminate&quot;&gt;&lt;/mat-progress-bar&gt;&lt;br&gt;
+            &lt;h2 style&#x3D;&quot;text-align: center;&quot;&gt;Cargando Clientes...&lt;/h2&gt;
+            }@else if (cliService.clientes.length &gt; 0) { &lt;!-- TABLA CLIENTES --&gt;
+
+            &lt;app-tabla-clientes&gt;&lt;/app-tabla-clientes&gt;
+            }@else {
+            &lt;h2&gt;No hay Clientes Disponibles...&lt;/h2&gt;
+            }
+            }@else if (cliService.formAdd) { &lt;!-- AGREGAR CLIENTE --&gt;
+
+            &lt;app-formAddCliente&gt;&lt;/app-formAddCliente&gt;
+            }
+            @if (!cliService.formAdd &amp;&amp; cliService.formEdit) {&lt;!-- EDITAR CLIENTE --&gt;
+
+            &lt;app-formEditCliente&gt;&lt;/app-formEditCliente&gt; }
+            }@else if (vehiService.tabVehiculos &amp;&amp; !cliService.tabClientes) {
+            &lt;app-vehiculos&gt;&lt;/app-vehiculos&gt;
+            }
+
+        &lt;/div&gt;
+    &lt;/main&gt;
+&lt;/app-base&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./clientes.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.card h5,h3{
+    text-align: center;
+}
+.container-vehiculo button {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    color: var(--main-color);
+    font-size: 30px;
+    padding: 8px 12px 8px 12px;
+    border: none;
+    margin-right: auto;
+    font-family: &#x27;Poppins&#x27;, sans-serif;
+    font-weight: 500;
+    transition: all 0.5s ease-in-out;
+}
+
+.container-vehiculo button:hover {
+    background: var(--main-color);
+    color: white;
+    cursor: pointer;
+}
+
+.container-vehiculo h2,h4{
+    text-align: center;
+    margin: 0;
+}
+
+.header-table {
+    display: flex;
+    padding: 5px 0px 10px 10px;
+    align-items: center;
+}
+.header-table #btnAdd i{
+    padding-right: 0px !important;
+    font-size: 26px;
+}
+.header-table button{
+    font-size: 20px !important
+}
+.header-table button i{
+    padding-right: 5px;
+    font-size: 25px;
+}
+
+.recent-grid{
+    margin-top: 10px;
+    grid-gap: 1.5rem;
+}
+
+.recent-grid .card{
+    padding: 5px 5px 5px 10px;
+}
+
+.inputGruop{
+    padding: 0!important;
+}
+.containerImg {
+    padding: 0 !important;
+}
+td img {
+    width: 100%;
+    max-width: 130px;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+}
+
+tr:hover{
+    cursor: pointer;
+}
+
+
+.btnActive{
+    background: var(--main-color) !important;
+    color: white !important;
+}
+
+
+form .inputGruop {
+    padding: 10px !important;
+}
+
+.containerInputFile{
+    display: flex;
+    position: relative;
+    margin: auto;
+    width: 100%;
+    height: 170px;
+    margin: auto;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px dashed #cacaca;
+    background-color: aliceblue;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.containerInputFile i{
+    font-size: 9rem;
+    color: #949494;
+}
+
+ .containerInputFile input[type&#x3D;&quot;file&quot;]{    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    cursor: pointer;
+ }
+ 
+ .paginator{
+   display: inline-flex;
+    width: 75%;
+    align-items: center;
+    justify-content: space-between;
+ }
+  .paginator i{
+    font-size: 1.6rem;
+    cursor: pointer;
+  } </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-base>    <main>        <div class="card container_Table">            @if(cliService.tabClientes){            @if(!cliService.formAdd && !cliService.formEdit){            <div class="header-table">                <button title="Agregar" id="btnAdd" (click)="cliService.formAdd=true">                    <i class="fa-solid fa-square-plus"></i>                </button>                <button title="Clientes" [class.btnActive]="cliService.tabClientes">                    <i class="fa-solid fa-address-book"></i>                    Clientes                </button>                <button title="Vehiculos"                    (click)="cliService.tabClientes=false;vehiService.tabVehiculos=true;cliService.formAdd=false;cliService.formEdit=false;">                    <i class="fa-solid fa-car"></i>                    Vehiculos                </button>            </div>            @if(cliService.loading){            <mat-progress-bar mode="indeterminate"></mat-progress-bar><br>            <h2 style="text-align: center;">Cargando Clientes...</h2>            }@else if (cliService.clientes.length > 0) { <!-- TABLA CLIENTES -->            <app-tabla-clientes></app-tabla-clientes>            }@else {            <h2>No hay Clientes Disponibles...</h2>            }            }@else if (cliService.formAdd) { <!-- AGREGAR CLIENTE -->            <app-formAddCliente></app-formAddCliente>            }            @if (!cliService.formAdd && cliService.formEdit) {<!-- EDITAR CLIENTE -->            <app-formEditCliente></app-formEditCliente> }            }@else if (vehiService.tabVehiculos && !cliService.tabClientes) {            <app-vehiculos></app-vehiculos>            }        </div>    </main></app-base></div>'
+    var COMPONENTS = [{'name': 'ActivadesMecComponent', 'selector': 'app-activadesMec'},{'name': 'ActividadesComponent', 'selector': 'app-actividades'},{'name': 'AngularNavComponent', 'selector': 'app-sideNav'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseComponent', 'selector': 'app-base'},{'name': 'ClientesComponent', 'selector': 'app-clientes'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DialogAuditoria', 'selector': 'dialog-auditoria'},{'name': 'DialogDataDelete', 'selector': 'modal-delete-cliente'},{'name': 'DialogFacturas', 'selector': 'delete-factura'},{'name': 'EstadisticasComponent', 'selector': 'app-estadisticas'},{'name': 'FacturacionComponent', 'selector': 'app-facturacion'},{'name': 'FormAddActComponent', 'selector': 'app-formAddAct'},{'name': 'FormAddClienteComponent', 'selector': 'app-formAddCliente'},{'name': 'FormAddFacturaComponent', 'selector': 'app-formAddFactura'},{'name': 'FormAddUsuarioComponent', 'selector': 'app-formAddUsuario'},{'name': 'FormAddVehiculoComponent', 'selector': 'app-formAddVehiculo'},{'name': 'FormEditActComponent', 'selector': 'app-formEditAct'},{'name': 'FormEditClienteComponent', 'selector': 'app-formEditCliente'},{'name': 'FormEditUsuarioComponent', 'selector': 'app-formEditUsuario'},{'name': 'FormEditVehiculoComponent', 'selector': 'app-formEditVehiculo'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformesComponent', 'selector': 'app-informes'},{'name': 'Tabla_actividadesComponent', 'selector': 'app-tabla_actividades'},{'name': 'Tabla_Dashboard', 'selector': 'app-tabla_dashboard'},{'name': 'TablaClientesComponent', 'selector': 'app-tabla-clientes'},{'name': 'TablaFacturasComponent', 'selector': 'app-tabla-facturas'},{'name': 'TablaUsuariosComponent', 'selector': 'app-tabla-usuarios'},{'name': 'TablaVehiculosComponent', 'selector': 'app-tabla-vehiculos'},{'name': 'UsuariosComponent', 'selector': 'app-usuarios'},{'name': 'VehiculosComponent', 'selector': 'app-vehiculos'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ClientesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ClientesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

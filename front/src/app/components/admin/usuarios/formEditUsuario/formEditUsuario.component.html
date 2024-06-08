@@ -1,0 +1,87 @@
+<div class="content-Form">
+  <button title="Volver" (click)="userService.formEdit=false;userService.tabUser=true">
+    <i class="fa-solid fa-square-caret-left"></i>
+  </button>
+  <h2>Editar Usuario</h2>
+  <form #formEditUser (submit)="userService.editUser($event)">
+    
+    <div class="containerForm">
+
+      <div class="inputGruop">
+        <label for="nombre">Nombre:</label>
+        <input [value]="userService.userEdit?.nombre" type="text" name="nombre" id="nombre" minlength="2" maxlength="50"
+          required="true">
+      </div>
+
+      <div class="inputGruop">
+        <label for="apellido">Apellido:</label>
+        <input [value]="userService.userEdit?.apellido" type="text" name="apellido" id="apellido" minlength="2"
+          maxlength="50" required="true">
+      </div>
+
+      <div class="inputGruop">
+        <label for="email">Email:</label>
+        <input [value]="userService.userEdit?.email" name="email" id="email" type="email" minlength="5" maxlength="50"
+          required="true">
+      </div>
+      <div class="inputGruop">
+        <label for="nombre_usuario">Nombre de Usuario:</label>
+        <input [value]="userService.userEdit?.nombre_usuario" type="text" name="nombre_usuario" id="nombre_usuario"
+          minlength="6" maxlength="50" required="true">
+      </div>
+
+      <div class="inputGruop">
+        <label for="contrasenia">Nueva contrasenia:</label>
+        <div class="content">
+          <input #ipt type="password" name="contrasenia" id="contrasenia" minlength="6" maxlength="50" autocomplete="off">
+          <i class="fa-solid"
+            [ngClass]="{'fa-eye-slash': globalService.showPassword, 'fa-eye': !globalService.showPassword}"
+            (click)="globalService.togglePassword(ipt)" [title]="ipt.type==='password'?'Ver':'Ocultar'"></i>
+        </div>
+      </div>
+
+      <div class="inputGruop">
+        <label for="rol">Rol:</label>
+        <select name="rol" id="rol" [value]="userService.userEdit?.rol" required="true">
+          <option value="" aria-checked="false">Seleccione Rol</option>
+          <option value="ADMINISTRADOR" [selected]="'ADMINISTRADOR' === userService.userEdit?.rol">Administrador
+          </option>
+          <option value="MECANICO" [selected]="'MECANICO' === userService.userEdit?.rol">Mecanico</option>
+        </select>
+      </div>
+
+      <div class="inputGruop">
+        <label for="estado">Estado:</label>
+        <select #select_estado [value]="userService.userEdit?.estado?.toLocaleUpperCase()"
+          [className]="userService.selectClass(select_estado.value)"
+          (change)="userService.selectClass(select_estado.value)" name="estado" id="estado" required="true">
+          <option value="" aria-checked="false">Seleccione Estado</option>
+          <option [className]="userService.selectClass('BAJA')" value="BAJA">BAJA</option>
+          <option [className]="userService.selectClass('ACTIVO')" value="ACTIVO">ACTIVO</option>
+        </select>
+      </div>
+
+      <div class="inputGruop">
+        <label for="imagen">Imagen:</label>
+        <div class="containerInputFile">
+          <input type="file" name="imagen" id="imagen" accept="image/*" title="Insertar"
+            (change)="userService.insertImg($event)">
+          @if (userService.userEdit?.pathImage && !userService.imgUsuario) {
+          <img [src]="userService.userEdit?.pathImage" [alt]="userService.userEdit?.apellido + ' ' + userService.userEdit?.nombre ">
+          }
+          @if (userService.imgUsuario) {
+          <img [src]="userService.imgUsuario" [alt]="userService.imgUsuario">
+          }
+          @if(!userService.userEdit?.pathImage && !userService.imgUsuario) {
+          <i class="fa-solid fa-circle-user"></i>
+          <span>Insertar Imagen</span>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="container-Btn-Modal">
+      <button type="reset" title="Cancelar" id="btnCancelar">Cancelar</button>
+      <button type="submit" title="Guardar" id="btnAgregar">Guardar</button>
+    </div>
+  </form>
+</div>

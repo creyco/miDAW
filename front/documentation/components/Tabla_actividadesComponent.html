@@ -1,0 +1,721 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">my-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Tabla_actividadesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/admin/actividades/tabla_actividades/tabla_actividades.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-tabla_actividades</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>DatePipe</code>
+                            <code>MatMenuModule</code>
+                            <code>MatSortModule</code>
+                            <code>MatPaginatorModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>../actividades.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./tabla_actividades.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialogAuditoria" >dialogAuditoria</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#openDialog" >openDialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(actividadService: <a href="../injectables/ActividadesService.html" target="_self">ActividadesService</a>, paginatorIntl: MatPaginatorIntl, globalService: <a href="../injectables/GlobalService.html" target="_self">GlobalService</a>, dialogAuditoria: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/admin/actividades/tabla_actividades/tabla_actividades.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>actividadService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ActividadesService.html" target="_self" >ActividadesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>paginatorIntl</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatPaginatorIntl</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>globalService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GlobalService.html" target="_self" >GlobalService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialogAuditoria</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDialog"></a>
+                    <span class="name">
+                        <span ><b>openDialog</b></span>
+                        <a href="#openDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDialog(auditorias: <a href="../interfaces/Auditoria.html" target="_self">Auditoria[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/app/components/admin/actividades/tabla_actividades/tabla_actividades.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>auditorias</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Auditoria.html" target="_self" >Auditoria[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialogAuditoria"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialogAuditoria</b></span>
+                        <a href="#dialogAuditoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialog</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/admin/actividades/tabla_actividades/tabla_actividades.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject } from &#x27;@angular/core&#x27;;
+import { ActividadesService } from &#x27;../../../../services/actividades.service&#x27;;
+import { MatMenuModule } from &#x27;@angular/material/menu&#x27;;
+import { MatSortModule } from &#x27;@angular/material/sort&#x27;;
+import { DatePipe } from &#x27;@angular/common&#x27;;
+import { MatPaginatorModule } from &#x27;@angular/material/paginator&#x27;;
+import { MatPaginatorIntl } from &#x27;@angular/material/paginator&#x27;;
+import { GlobalService } from &#x27;../../../../services/Global.service&#x27;;
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from &#x27;@angular/material/dialog&#x27;;
+import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
+import { Auditoria } from &#x27;../../../../interfaces/Auditoria&#x27;;
+@Component({
+  selector: &#x27;app-tabla_actividades&#x27;,
+  templateUrl: &#x27;./tabla_actividades.component.html&#x27;,
+  styleUrls: [&#x27;../actividades.component.css&#x27;],
+  standalone: true,
+  imports: [DatePipe, MatMenuModule, MatSortModule, MatPaginatorModule]
+})
+export class Tabla_actividadesComponent {
+
+  constructor(protected actividadService: ActividadesService, private paginatorIntl: MatPaginatorIntl,
+    protected globalService: GlobalService, public dialogAuditoria: MatDialog,) {
+    this.paginatorIntl.itemsPerPageLabel &#x3D; &#x27;Elementos por Página&#x27;;
+    this.paginatorIntl.nextPageLabel &#x3D; &#x27;Página Siguiente&#x27;;
+    this.paginatorIntl.previousPageLabel &#x3D; &#x27;Página Anterior&#x27;;
+  }
+
+  openDialog(auditorias: Auditoria[]): void {
+    this.dialogAuditoria.open(DialogAuditoria, {
+      width: &#x27;fit-content&#x27;,
+      data: auditorias
+    });
+  }
+
+}
+
+@Component({
+  selector: &#x27;dialog-auditoria&#x27;,
+  templateUrl: &#x27;../detalles-actividad.html&#x27;,
+  styleUrls: [&#x27;../../actividades/actividades.component.css&#x27;],
+  standalone: true,
+  imports: [DatePipe, MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+})
+export class DialogAuditoria {
+  constructor(@Inject(MAT_DIALOG_DATA) protected auditorias: Auditoria[], protected actService: ActividadesService) { }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;table-responsive&quot;&gt;
+  &lt;table width&#x3D;&quot;100%&quot; matSort (matSortChange)&#x3D;&quot;actividadService.sortData($event)&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;td mat-sort-header&#x3D;&quot;descripcion&quot;&gt;Descripción&lt;/td&gt;
+        &lt;td mat-sort-header&#x3D;&quot;prioridad&quot;&gt;Prioridad&lt;/td&gt;
+        &lt;td mat-sort-header&#x3D;&quot;vehiculo&quot;&gt;Vehiculo&lt;/td&gt;
+        &lt;td mat-sort-header&#x3D;&quot;patente&quot;&gt;Patente&lt;/td&gt;
+        &lt;td mat-sort-header&#x3D;&quot;mecanico&quot;&gt;Mecanico&lt;/td&gt;
+        &lt;td mat-sort-header&#x3D;&quot;estado&quot;&gt;Estado&lt;/td&gt;
+        &lt;td mat-sort-header&#x3D;&quot;fecha&quot; [width]&#x3D;&quot;110&quot;&gt;Fecha&lt;/td&gt;
+        &lt;td&gt;Modificar&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;/tr&gt;
+      @for (item of actividadService.actividades; track $index) {
+      &lt;tr&gt;
+        &lt;td&gt;{{item.descripcion}}&lt;/td&gt;
+        &lt;td&gt;
+          &lt;span [className]&#x3D;&quot;actividadService.selectClass(item.prioridad)&quot;&gt;&lt;/span&gt;
+          {{item.prioridad}}
+        &lt;/td&gt;
+        &lt;td&gt;{{item.vehiculo.marca_modelo}}&lt;/td&gt;
+        &lt;td&gt;&lt;strong&gt;{{item.vehiculo.patente}}&lt;/strong&gt;&lt;/td&gt;
+        &lt;td&gt;{{item.usuario_actual.nombre}} {{item.usuario_actual.apellido}}&lt;/td&gt;
+        &lt;td&gt;
+          &lt;span [className]&#x3D;&quot;actividadService.selectClass(item.estado)&quot;&gt;&lt;/span&gt;
+          {{item.estado}}
+        &lt;/td&gt;
+        &lt;td&gt;
+          {{item.fecha_modificacion| date: &#x27;dd/MM/yyyy HH:mm:ss&#x27;}}
+        &lt;/td&gt;
+        &lt;td&gt;
+          &lt;button style&#x3D;&quot;margin: auto;&quot; mat-button [matMenuTriggerFor]&#x3D;&quot;menu&quot; id&#x3D;&quot;menu&quot; title&#x3D;&quot;Opciones&quot;&gt;
+            &lt;i class&#x3D;&quot;fa-solid fa-ellipsis&quot;&gt;&lt;/i&gt;
+          &lt;/button&gt;
+          &lt;mat-menu #menu&#x3D;&quot;matMenu&quot;&gt;
+            &lt;button mat-menu-item class&#x3D;&quot;edit&quot; title&#x3D;&quot;Editar&quot;
+              (click)&#x3D;&quot;actividadService.tabActividades&#x3D;false;
+            actividadService.formEdit&#x3D;true;actividadService.actividadEdit&#x3D;item; actividadService.vehiculoSelected&#x3D;item.vehiculo;&quot;&gt;
+              &lt;i class&#x3D;&quot; fa-solid fa-pencil&quot;&gt;&lt;/i&gt;
+              Editar
+            &lt;/button&gt;
+            &lt;button mat-menu-item (click)&#x3D;&quot;openDialog(item.auditorias)&quot; class&#x3D;&quot;edit&quot; title&#x3D;&quot;Eliminar&quot;&gt;
+              &lt;i class&#x3D;&quot;fa-solid fa-circle-info&quot;&gt;&lt;/i&gt;
+              Detalles
+            &lt;/button&gt;
+          &lt;/mat-menu&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      }
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+  &lt;mat-paginator [length]&#x3D;&quot;actividadService.longitud&quot; [pageSize]&#x3D;&quot;10&quot;
+    (page)&#x3D;&quot;actividadService.getActividades($event.pageIndex * 10, $event.pageSize)&quot;
+    [pageSizeOptions]&#x3D;&quot;globalService.optionsPageSize(actividadService.longitud)&quot; aria-label&#x3D;&quot;Seleccionar Pagina&quot;&gt;
+  &lt;/mat-paginator&gt;
+
+  &lt;div class&#x3D;&quot;container-Btn-Modal&quot;&gt;
+    &lt;button title&#x3D;&quot;Pdf&quot; (click)&#x3D;&quot;actividadService.downloadPDF()&quot;&gt;
+      &lt;i class&#x3D;&quot;fa-solid fa-file-pdf&quot;&gt;&lt;/i&gt;
+      Descargar PDF
+    &lt;/button&gt;
+    &lt;button title&#x3D;&quot;Csv&quot; (click)&#x3D;&quot;actividadService.downloadCSV()&quot;&gt;
+      &lt;i class&#x3D;&quot;fa-solid fa-file-csv&quot;&gt;&lt;/i&gt;
+      Descargar CSV
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>../actividades.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">
+td select {
+        width: -webkit-fill-available !important;
+        height: 30px !important;
+        border-radius: 5px !important;
+        margin: auto !important;
+        cursor: pointer;
+}
+
+.inputGruop textarea {
+    border: 1px solid var(--main-color);
+    border-radius: 8px;
+    font-family: &#x27;Poppins&#x27;, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 5px;
+}
+
+.inputGruop textarea:focus {
+    outline-color: var(--main-color);
+}
+
+
+.inputGruop .containerImg {
+    margin: auto;
+    width: 100%;
+    padding: 5px;
+}
+
+.inputGruop img {
+    width: 100%;
+        height: 180px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px;
+}
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="table-responsive">  <table width="100%" matSort (matSortChange)="actividadService.sortData($event)">    <thead>      <tr>        <td mat-sort-header="descripcion">Descripción</td>        <td mat-sort-header="prioridad">Prioridad</td>        <td mat-sort-header="vehiculo">Vehiculo</td>        <td mat-sort-header="patente">Patente</td>        <td mat-sort-header="mecanico">Mecanico</td>        <td mat-sort-header="estado">Estado</td>        <td mat-sort-header="fecha" [width]="110">Fecha</td>        <td>Modificar</td>      </tr>    </thead>    <tbody>      <tr></tr>      @for (item of actividadService.actividades; track $index) {      <tr>        <td>{{item.descripcion}}</td>        <td>          <span [className]="actividadService.selectClass(item.prioridad)"></span>          {{item.prioridad}}        </td>        <td>{{item.vehiculo.marca_modelo}}</td>        <td><strong>{{item.vehiculo.patente}}</strong></td>        <td>{{item.usuario_actual.nombre}} {{item.usuario_actual.apellido}}</td>        <td>          <span [className]="actividadService.selectClass(item.estado)"></span>          {{item.estado}}        </td>        <td>          {{item.fecha_modificacion| date: \'dd/MM/yyyy HH:mm:ss\'}}        </td>        <td>          <button style="margin: auto;" mat-button [matMenuTriggerFor]="menu" id="menu" title="Opciones">            <i class="fa-solid fa-ellipsis"></i>          </button>          <mat-menu #menu="matMenu">            <button mat-menu-item class="edit" title="Editar"              (click)="actividadService.tabActividades=false;            actividadService.formEdit=true;actividadService.actividadEdit=item; actividadService.vehiculoSelected=item.vehiculo;">              <i class=" fa-solid fa-pencil"></i>              Editar            </button>            <button mat-menu-item (click)="openDialog(item.auditorias)" class="edit" title="Eliminar">              <i class="fa-solid fa-circle-info"></i>              Detalles            </button>          </mat-menu>        </td>      </tr>      }    </tbody>  </table>  <mat-paginator [length]="actividadService.longitud" [pageSize]="10"    (page)="actividadService.getActividades($event.pageIndex * 10, $event.pageSize)"    [pageSizeOptions]="globalService.optionsPageSize(actividadService.longitud)" aria-label="Seleccionar Pagina">  </mat-paginator>  <div class="container-Btn-Modal">    <button title="Pdf" (click)="actividadService.downloadPDF()">      <i class="fa-solid fa-file-pdf"></i>      Descargar PDF    </button>    <button title="Csv" (click)="actividadService.downloadCSV()">      <i class="fa-solid fa-file-csv"></i>      Descargar CSV    </button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'ActivadesMecComponent', 'selector': 'app-activadesMec'},{'name': 'ActividadesComponent', 'selector': 'app-actividades'},{'name': 'AngularNavComponent', 'selector': 'app-sideNav'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseComponent', 'selector': 'app-base'},{'name': 'ClientesComponent', 'selector': 'app-clientes'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DialogAuditoria', 'selector': 'dialog-auditoria'},{'name': 'DialogDataDelete', 'selector': 'modal-delete-cliente'},{'name': 'DialogFacturas', 'selector': 'delete-factura'},{'name': 'EstadisticasComponent', 'selector': 'app-estadisticas'},{'name': 'FacturacionComponent', 'selector': 'app-facturacion'},{'name': 'FormAddActComponent', 'selector': 'app-formAddAct'},{'name': 'FormAddClienteComponent', 'selector': 'app-formAddCliente'},{'name': 'FormAddFacturaComponent', 'selector': 'app-formAddFactura'},{'name': 'FormAddUsuarioComponent', 'selector': 'app-formAddUsuario'},{'name': 'FormAddVehiculoComponent', 'selector': 'app-formAddVehiculo'},{'name': 'FormEditActComponent', 'selector': 'app-formEditAct'},{'name': 'FormEditClienteComponent', 'selector': 'app-formEditCliente'},{'name': 'FormEditUsuarioComponent', 'selector': 'app-formEditUsuario'},{'name': 'FormEditVehiculoComponent', 'selector': 'app-formEditVehiculo'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformesComponent', 'selector': 'app-informes'},{'name': 'Tabla_actividadesComponent', 'selector': 'app-tabla_actividades'},{'name': 'Tabla_Dashboard', 'selector': 'app-tabla_dashboard'},{'name': 'TablaClientesComponent', 'selector': 'app-tabla-clientes'},{'name': 'TablaFacturasComponent', 'selector': 'app-tabla-facturas'},{'name': 'TablaUsuariosComponent', 'selector': 'app-tabla-usuarios'},{'name': 'TablaVehiculosComponent', 'selector': 'app-tabla-vehiculos'},{'name': 'UsuariosComponent', 'selector': 'app-usuarios'},{'name': 'VehiculosComponent', 'selector': 'app-vehiculos'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Tabla_actividadesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Tabla_actividadesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

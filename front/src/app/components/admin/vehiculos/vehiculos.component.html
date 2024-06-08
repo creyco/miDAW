@@ -1,0 +1,38 @@
+<div class="container-vehiculo">
+  @if (!vehiService.formAdd && !vehiService.formEdit) {
+  <div class="header-table ">
+
+    <button title="Agregar" id="btnAdd" (click)="vehiService.formAdd=true">
+      <i class="fa-solid fa-square-plus"></i>
+    </button>
+
+    <button title="Clientes"
+      (click)="vehiService.formAdd=false;vehiService.formEdit;cliService.tabClientes=true;vehiService.tabVehiculos=false;this.cliService.getClientes()">
+      <i class="fa-solid fa-address-book"></i>
+      Clientes
+    </button>
+    <button title="Vehiculos" [class.btnActive]="vehiService.tabVehiculos">
+      <i class="fa-solid fa-car"></i>
+      Vehiculos
+    </button>
+  </div>
+
+  @if(vehiService.loading){
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar><br>
+  <h2 style="text-align: center;">Cargando Vehiculos...</h2>
+  }@else if (vehiService.vehiculos.length > 0) {<!-- TABLA VEHICULOS -->
+
+  <app-tabla-vehiculos></app-tabla-vehiculos>
+  }@else{
+  <h2>No hay Vehiculos Disponibles...</h2>
+  }
+  }
+  @if (vehiService.formAdd && !vehiService.formEdit) {<!-- AGREGAR VEHICULO -->
+
+  <app-formAddVehiculo></app-formAddVehiculo>
+  }@else if (!vehiService.formAdd && vehiService.formEdit) {<!-- EDITAR VEHICULO -->
+
+  <app-formEditVehiculo></app-formEditVehiculo>
+  }
+
+</div>

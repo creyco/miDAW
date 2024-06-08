@@ -1,0 +1,84 @@
+@startuml
+!theme mars
+left to right direction
+
+skinparam package {
+    layout new
+}
+
+actor "Usuario Autenticado" as UsuarioAutenticado
+actor "Usuario No Autenticado" as UsuarioNoAutenticado
+
+
+rectangle "Sistema de Compras" {
+
+ usecase "Gestión de Productos" as GestionProductos
+ usecase "Gestión de Pedidos" as GestionPedidos
+ usecase "Gestión de Pagos" as GestionPagos
+ usecase "Gestión de Usuarios" as GestionUsuarios
+ usecase "Autenticar Usuarios" as AutenticarUsuario
+
+ usecase "Agregar Productos" as AgregarProducto
+ usecase "Listar Productos" as ListarProductos
+ usecase "Baja Productos" as BajaProducto
+ usecase "Buscar Productos" as BuscarProducto
+ usecase "Modificar Productos" as ModificarProducto
+
+ usecase "Agregar Productos al Pedido" as AgregarProductosPedido
+ usecase "Listar Productos Añadidos al Pedido" as ListarProductosAñadidos
+ usecase "Baja Productos del Pedido" as BajaProductosPedido
+ usecase "Finalizar Pedido" as FinalizarPedido
+
+ usecase "Procesar Pago con Tarjeta de Crédito" as PagoTarjeta
+ usecase "Procesar Pago con Contra Reembolso" as PagoReembolso
+ usecase "Procesar Pago con Transferencia" as PagoTransferencia
+ usecase "Registrar Facturación del Pedido" as AgregarFacturación
+
+ usecase "Agregar Usuarios" as AgregarUsuario
+ usecase "Modificar Usuarios" as ModificarUsuario
+ usecase "Baja Usuarios" as BajaUsuario
+ usecase "Consultar Usuarios" as ConsultarUsuario
+
+}
+
+UsuarioAutenticado --- AutenticarUsuario
+AutenticarUsuario <.- GestionPedidos: "<<extend>>"
+AutenticarUsuario <.- GestionPagos: "<<extend>>"
+AutenticarUsuario <.- GestionUsuarios: "<<extend>>"
+AutenticarUsuario <.- GestionProductos: "<<extend>>"
+
+:UsuarioAutenticado: <-r- :UsuarioNoAutenticado:
+
+GestionProductos  <.- AgregarProducto: "<<extend>>"
+GestionProductos  <.- ListarProductos: "<<extend>>"-
+GestionProductos  <.- BajaProducto: "<<extend>>"
+GestionProductos  <.- ModificarProducto: "<<extend>>"
+GestionProductos  <.- BuscarProducto: "<<extend>>"
+
+BajaProducto -.> BuscarProducto: "<<include>>"
+ModificarProducto -.> BuscarProducto: "<<include>>"
+
+GestionPedidos <.- AgregarProductosPedido: "<<extend>>"
+GestionPedidos <.- ListarProductosAñadidos: "<<extend>>"
+GestionPedidos <.- BajaProductosPedido: "<<extend>>"
+GestionPedidos <.- FinalizarPedido: "<<extend>>"
+
+AgregarProductosPedido -.> BuscarProducto: "<<include>>"
+
+GestionPagos <.- PagoTarjeta: "<<extend>>"
+GestionPagos <.- PagoReembolso: "<<extend>>"
+GestionPagos <.- PagoTransferencia: "<<extend>>"
+GestionPagos <.- AgregarFacturación: "<<extend>>"
+
+GestionPagos <.- FinalizarPedido: "<<include>>"
+
+GestionUsuarios <.- AgregarUsuario: "<<extend>>"
+
+GestionUsuarios <.- ModificarUsuario: "<<extend>>"
+GestionUsuarios <.- BajaUsuario: "<<extend>>"
+
+GestionUsuarios <.- ConsultarUsuario: "<<extend>>"
+
+BajaUsuario -.> ConsultarUsuario: "<<include>>"
+ModificarUsuario -.> ConsultarUsuario: "<<include>>"
+@enduml
